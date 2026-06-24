@@ -75,7 +75,6 @@ export const Navbar: React.FC = () => {
           >
             <button className="text-on-surface-variant hover:text-primary transition-colors duration-300 flex items-center gap-1 cursor-pointer">
               {t("nav_services")}
-              <span className="material-symbols-outlined text-[16px]">expand_more</span>
             </button>
             {isServicesOpen && (
               <div className="absolute top-full left-0 rtl:right-0 rtl:left-auto mt-2 w-48 bg-white/95 backdrop-blur-xl border border-outline-variant/30 rounded-xl shadow-2xl z-50 p-2">
