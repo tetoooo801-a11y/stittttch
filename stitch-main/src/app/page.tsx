@@ -8,27 +8,28 @@ export default function Home() {
   const { t, language } = useLanguage();
 
   return (
-    <div className="pt-[100px] md:pt-[120px] pb-24 transition-content bg-background">
+    <div className="pt-[100px] md:pt-[120px] pb-24 transition-content bg-background relative">
+      
       {/* Hero Section */}
-      <section className="relative w-full max-w-[1600px] mx-auto min-h-[85vh] md:min-h-[80vh] flex flex-col justify-center mb-[160px] overflow-hidden">
+      <section className="relative w-full max-w-[1600px] mx-auto min-h-[85vh] md:min-h-[80vh] flex flex-col justify-center mb-[100px] md:mb-[160px] overflow-hidden">
         {/* Split Background */}
-        <div className="absolute inset-0 flex flex-col md:flex-row">
-          <div className="w-full md:w-1/2 h-1/2 md:h-full bg-surface"></div>
-          <div className="w-full md:w-1/2 h-1/2 md:h-full relative">
+        <div className="absolute inset-0 flex flex-col md:flex-row bg-surface">
+          <div className="hidden md:block w-full md:w-1/2 h-full bg-surface"></div>
+          <div className="w-full h-full md:w-1/2 relative hidden md:block">
             <img
               src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1200&q=80"
               alt="Salon Background"
               className="w-full h-full object-cover opacity-60 blur-[2px]"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-surface via-transparent to-transparent hidden md:block"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-surface via-transparent to-transparent"></div>
           </div>
         </div>
 
         {/* Content Overlay */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-12 mt-10">
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12 mt-4 md:mt-10">
           
           {/* Left Card */}
-          <div className="glass-card rounded-[32px] p-8 md:p-12 max-w-lg w-full transform transition hover:-translate-y-1 duration-500">
+          <div className="glass-card rounded-[32px] p-6 md:p-12 max-w-lg w-full transform transition hover:-translate-y-1 duration-500">
             <h3 className="text-on-surface-variant font-label-sm uppercase tracking-[0.3em] font-semibold mb-6">
               {t("home_discover")}
             </h3>
@@ -38,21 +39,21 @@ export default function Home() {
                 {t("home_passion").split(",")[1]}
               </span>
             </h1>
-            <p className="text-on-surface-variant font-body-md text-sm leading-relaxed mb-10">
+            <p className="text-on-surface-variant font-body-md text-sm leading-relaxed mb-8 md:mb-10">
               {t("home_inspired")}
             </p>
             
-            <div className="flex flex-wrap items-center gap-4 mb-10">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8 md:mb-10 w-full">
               <Link
                 href="/book"
-                className="bg-on-surface text-white px-8 py-3.5 rounded-full font-body-md text-sm hover:bg-on-surface-variant transition-colors duration-300 shadow-[0_4px_14px_0_rgba(0,0,0,0.1)] flex items-center gap-2"
+                className="w-full sm:w-auto justify-center bg-on-surface text-white px-8 py-3.5 rounded-full font-body-md text-sm hover:bg-on-surface-variant transition-colors duration-300 shadow-[0_4px_14px_0_rgba(0,0,0,0.1)] flex items-center gap-2"
               >
                 {t("hero_book")}
                 <svg className="w-4 h-4 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </Link>
               <Link
                 href="/services"
-                className="glass-panel border border-rose-gold text-on-surface px-8 py-3.5 rounded-full font-body-md text-sm hover:bg-surface-container transition-colors duration-300"
+                className="w-full sm:w-auto justify-center glass-panel border border-rose-gold text-on-surface px-8 py-3.5 rounded-full font-body-md text-sm hover:bg-surface-container transition-colors duration-300 flex items-center"
               >
                 {t("home_explore")}
               </Link>
@@ -73,7 +74,7 @@ export default function Home() {
           </div>
 
           {/* Right Card */}
-          <div className="glass-card rounded-[32px] p-4 max-w-sm w-full relative transform transition hover:-translate-y-2 duration-500">
+          <div className="glass-card rounded-[32px] p-4 max-w-sm w-full relative transform transition hover:-translate-y-2 duration-500 hidden sm:block">
             <div className="absolute top-8 right-8 rtl:left-8 rtl:right-auto z-20 bg-on-surface backdrop-blur-sm text-white text-[10px] px-3 py-1 rounded-full uppercase tracking-widest font-semibold font-label-sm">
               -15% OFF
             </div>
@@ -122,16 +123,11 @@ export default function Home() {
             <span className="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
           </div>
         </div>
-
-        {/* Floating Calendar Button (Bottom Right) */}
-        <Link href="/book" className="absolute bottom-10 right-10 rtl:left-10 rtl:right-auto z-20 w-14 h-14 bg-primary-container rounded-full flex items-center justify-center shadow-xl hover:bg-rose-gold transition-colors duration-300">
-           <span className="material-symbols-outlined text-on-surface">calendar_month</span>
-        </Link>
       </section>
 
       {/* Brand Mission Section */}
-      <section className="max-w-[1440px] mx-auto px-6 md:px-10 mb-[160px]">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+      <section className="max-w-[1440px] mx-auto px-6 md:px-10 mb-[100px] md:mb-[160px]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
           <div className="md:col-span-3">
             <h2 className="font-label-sm uppercase tracking-[0.3em] text-sm text-on-surface font-bold">
               BRAND MISSION
@@ -153,11 +149,13 @@ export default function Home() {
 
       {/* Services Categories */}
       <section className="max-w-[1440px] mx-auto px-6 md:px-10 mb-[160px]" id="services">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Horizontal scroll container for mobile, standard grid for desktop */}
+        <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory gap-4 scrollbar-hide md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:overflow-visible md:pb-0 md:snap-none">
+          
           {/* Category - Body */}
           <Link
             href="/services/body"
-            className="rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[500px] relative overflow-hidden shadow-lg"
+            className="min-w-[85vw] sm:min-w-[60vw] md:min-w-0 snap-center rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[400px] md:h-[500px] relative overflow-hidden shadow-lg flex-shrink-0"
           >
             <img
               alt="Body Care"
@@ -175,7 +173,7 @@ export default function Home() {
           {/* Category - Face */}
           <Link
             href="/services/face"
-            className="rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[500px] relative overflow-hidden shadow-lg"
+            className="min-w-[85vw] sm:min-w-[60vw] md:min-w-0 snap-center rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[400px] md:h-[500px] relative overflow-hidden shadow-lg flex-shrink-0"
           >
             <img
               alt="Face Care"
@@ -193,7 +191,7 @@ export default function Home() {
           {/* Category - Hair */}
           <Link
             href="/services/hair"
-            className="rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[500px] relative overflow-hidden shadow-lg"
+            className="min-w-[85vw] sm:min-w-[60vw] md:min-w-0 snap-center rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[400px] md:h-[500px] relative overflow-hidden shadow-lg flex-shrink-0"
           >
             <img
               alt="Hair Care"
@@ -211,7 +209,7 @@ export default function Home() {
           {/* Category - Other / Specialty */}
           <Link
             href="/services/specialty"
-            className="rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[500px] relative overflow-hidden shadow-lg"
+            className="min-w-[85vw] sm:min-w-[60vw] md:min-w-0 snap-center rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[400px] md:h-[500px] relative overflow-hidden shadow-lg flex-shrink-0"
           >
             <img
               alt="Other Specialty"
@@ -230,6 +228,7 @@ export default function Home() {
               </span>
             </div>
           </Link>
+          
         </div>
       </section>
     </div>

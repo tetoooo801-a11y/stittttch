@@ -156,9 +156,9 @@ export const Navbar: React.FC = () => {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden w-full bg-white border-t border-outline-variant/35 py-4 px-6 flex flex-col gap-4 font-body-md text-sm uppercase tracking-wider">
-          <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_home")}</Link>
-          <Link href="/about" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_about")}</Link>
+        <div className="md:hidden w-full bg-surface/95 backdrop-blur-2xl border-t border-outline-variant/30 py-6 px-8 flex flex-col gap-6 font-body-md text-sm uppercase tracking-widest shadow-2xl max-h-[80vh] overflow-y-auto">
+          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary transition-colors">{t("nav_home")}</Link>
+          <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary transition-colors">{t("nav_about")}</Link>
           <Link href="/services" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_services")}</Link>
           <Link href="/book" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_booking")}</Link>
           <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_contact")}</Link>
