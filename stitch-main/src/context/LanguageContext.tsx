@@ -246,6 +246,18 @@ const translations: Record<Language, Record<string, string>> = {
     cart_checkout: "Book Selected Services",
     loading: "Loading...",
     error_loading: "Failed to load data. Please try again.",
+
+    // New Homepage
+    home_discover: "DISCOVER YOUR BEST SELF",
+    home_passion: "Your Beauty, Our Passion",
+    home_inspired: "Inspired by you and created to bring out your natural beauty. Experience sophisticated self-care redefined.",
+    home_explore: "Explore Services",
+    home_trusted: "Trusted by",
+    home_clients: "500+ happy clients",
+    home_premium: "PREMIUM PRODUCTS",
+    home_specialists: "PROFESSIONAL SPECIALISTS",
+    home_luxury: "LUXURY EXPERIENCE",
+    home_easy: "EASY BOOKING",
   },
   ar: {
     // Navigation
@@ -481,6 +493,18 @@ const translations: Record<Language, Record<string, string>> = {
     cart_checkout: "احجز الخدمات المختارة",
     loading: "جاري التحميل...",
     error_loading: "فشل تحميل البيانات. يرجى المحاولة مرة أخرى.",
+
+    // New Homepage
+    home_discover: "اكتشفي أفضل نسخة منكِ",
+    home_passion: "جمالك، شغفنا",
+    home_inspired: "مستوحى منكِ وصُنع ليُبرز جمالك الطبيعي. استمتعي بتجربة رعاية ذاتية متطورة.",
+    home_explore: "استكشاف الخدمات",
+    home_trusted: "موثوق به من قِبل",
+    home_clients: "+٥٠٠ عميلة سعيدة",
+    home_premium: "منتجات فاخرة",
+    home_specialists: "خبراء محترفون",
+    home_luxury: "تجربة فاخرة",
+    home_easy: "حجز سهل",
   },
 };
 

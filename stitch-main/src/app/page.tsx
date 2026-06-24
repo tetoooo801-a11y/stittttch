@@ -10,188 +10,222 @@ export default function Home() {
   return (
     <div className="pt-[100px] md:pt-[120px] pb-24 transition-content">
       {/* Hero Section */}
-      <section className="max-w-[1440px] mx-auto px-6 md:px-10 relative mb-24">
-        <div className="relative w-full h-[60vh] md:h-[75vh] rounded-[40px] overflow-hidden mb-12">
-          {/* Main Hero Image */}
-          <img
-            alt="Stitch Luxury Beauty Salon Interior"
-            className="w-full h-full object-cover"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo4aAiofl4r9H6rcHe3LCi_l1A61KjkC-QKMkojO2he28wH0OwkzugtwIbSHQ0cZHanRNmFnkj-oVJjvJBNRsqUxiurL329bDmwoEy2usjEFoBiQ8lSb4fyIEGhDBeCBc_-4Ow_1HWAzHjyRR0euLj_NOtZUS5a9Kt9DpiSYATG76VSEI7jaat4clfMufkHQqVKRZt-Ysi_IQ58OO1smrfvoDmrJ2ZaVLKHIrH3JN_Oxe22mihXSijMAxCl6W3lS65xeuel1r9CXwx"
-          />
-
-          {/* Floating Glass Card Over Hero */}
-          <div className="absolute bottom-6 left-6 rtl:left-auto rtl:right-6 md:bottom-12 md:left-12 rtl:md:left-auto rtl:md:right-12 glass-card p-6 md:p-8 rounded-2xl max-w-sm">
-            <p className="font-body-md text-on-surface mb-2 text-sm md:text-base leading-relaxed">
-              {t("home_philosophy_desc")}
-            </p>
-            <p className="font-label-sm text-xs text-on-surface-variant uppercase tracking-wider">
-              {t("home_philosophy_title")}
-            </p>
-          </div>
-
-          {/* Floating Product Image - Top Right */}
-          <div className="absolute top-12 right-12 rtl:right-auto rtl:left-12 glass-card p-4 rounded-xl w-48 shadow-lg hover:-translate-y-2 transition-transform duration-500 hidden lg:block">
+      <section className="relative w-full max-w-[1600px] mx-auto min-h-[85vh] md:min-h-[80vh] flex flex-col justify-center mb-24 overflow-hidden">
+        {/* Split Background */}
+        <div className="absolute inset-0 flex flex-col md:flex-row">
+          <div className="w-full md:w-1/2 h-1/2 md:h-full bg-[#f9f8f6]"></div>
+          <div className="w-full md:w-1/2 h-1/2 md:h-full relative">
             <img
-              alt="Signature Facial"
-              className="w-full h-auto rounded-lg mb-3 object-cover aspect-square"
-              src="https://lh3.googleusercontent.com/aida/AP1WRLvFQ6_Dqrf5CLiUkwnzHPdRI2N2jxXH5sJfmXd6vJC-AKq-Ujzhtrpbn0FV82GFCx7nn-7DTHOOst_EVFLX1W38Y4kbTMViySrKu2sjpSoEYzXdXcHClWm-tafZvkt3VHr4f4znRdNb5NpAqMOxl3NN8MuTzrJrlS-rzthHTev8p62JJTgGFVXqDE4GZldpdxL18S0bZzZEFjGdzcrf-4qytu1yOWw9ffotg1BJg__xgJd9txgQ4SO949o"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo4aAiofl4r9H6rcHe3LCi_l1A61KjkC-QKMkojO2he28wH0OwkzugtwIbSHQ0cZHanRNmFnkj-oVJjvJBNRsqUxiurL329bDmwoEy2usjEFoBiQ8lSb4fyIEGhDBeCBc_-4Ow_1HWAzHjyRR0euLj_NOtZUS5a9Kt9DpiSYATG76VSEI7jaat4clfMufkHQqVKRZt-Ysi_IQ58OO1smrfvoDmrJ2ZaVLKHIrH3JN_Oxe22mihXSijMAxCl6W3lS65xeuel1r9CXwx"
+              alt="Salon Background"
+              className="w-full h-full object-cover opacity-60 blur-[2px]"
             />
-            <div className="flex justify-between items-center">
-              <div>
-                <p className="font-label-sm text-xs uppercase font-semibold">
-                  {t("prod_1_title")}
-                </p>
-                <p className="text-[10px] text-on-surface-variant">
-                  Sale -15%
-                </p>
-              </div>
-              <span className="material-symbols-outlined text-[16px] rtl:transform rtl:rotate-180">
-                arrow_outward
-              </span>
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#f9f8f6] via-transparent to-transparent hidden md:block"></div>
           </div>
         </div>
 
-        {/* Hero Bottom text and call to actions */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mt-12 items-end">
-          <div className="md:col-span-8">
-            <h1 className="font-headline-lg text-4xl md:text-6xl text-on-surface leading-tight font-light">
-              {t("hero_title")} <br />
-              <span className="text-primary italic font-serif">
-                {language === "ar" ? "صُمم لكل امرأة" : "Designed For Every Woman"}
+        {/* Content Overlay */}
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-12 mt-10">
+          
+          {/* Left Card */}
+          <div className="bg-white/90 backdrop-blur-md rounded-[40px] p-8 md:p-12 shadow-2xl max-w-lg w-full transform transition hover:-translate-y-1 duration-500">
+            <h3 className="text-on-surface-variant text-xs uppercase tracking-[0.3em] font-semibold mb-6">
+              {t("home_discover")}
+            </h3>
+            <h1 className="font-headline-lg text-4xl md:text-5xl text-on-surface leading-tight mb-6">
+              {t("home_passion").split(",")[0]}, <br />
+              <span className="italic font-serif text-primary">
+                {t("home_passion").split(",")[1]}
               </span>
             </h1>
-          </div>
-          <div className="md:col-span-4 flex flex-col justify-end">
-            <p className="font-body-lg text-base md:text-lg text-on-surface-variant mb-6 leading-relaxed">
-              {t("hero_desc")}
+            <p className="text-on-surface-variant font-body-md text-sm leading-relaxed mb-10">
+              {t("home_inspired")}
             </p>
-            <div className="flex flex-wrap gap-4">
+            
+            <div className="flex flex-wrap items-center gap-4 mb-10">
               <Link
                 href="/book"
-                className="bg-on-surface text-white px-6 py-3.5 rounded-full font-body-md text-sm hover:bg-primary transition-colors duration-300 shadow-md text-center inline-block"
+                className="bg-[#6b5a4d] text-white px-8 py-3.5 rounded-full font-body-md text-sm hover:bg-[#5a4a3e] transition-colors duration-300 shadow-md flex items-center gap-2"
               >
                 {t("hero_book")}
+                <span className="material-symbols-outlined text-[18px] rtl:rotate-180">arrow_forward</span>
               </Link>
               <Link
                 href="/services"
-                className="glass-card border border-rose-gold text-on-surface px-6 py-3.5 rounded-full font-body-md text-sm hover:bg-surface-container transition-colors duration-300 text-center inline-block"
+                className="border border-outline text-on-surface px-8 py-3.5 rounded-full font-body-md text-sm hover:bg-surface-container transition-colors duration-300"
               >
-                {t("hero_services")}
+                {t("home_explore")}
+              </Link>
+            </div>
+
+            <div className="flex items-center gap-4 pt-6 border-t border-outline-variant/30">
+              <div className="flex -space-x-3 rtl:space-x-reverse">
+                <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&h=100" alt="Client 1"/>
+                <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100" alt="Client 2"/>
+                <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&h=100" alt="Client 3"/>
+                <div className="w-10 h-10 rounded-full border-2 border-white bg-surface-container flex items-center justify-center text-[10px] font-bold">+500</div>
+              </div>
+              <div>
+                <p className="text-[10px] text-on-surface-variant uppercase">{t("home_trusted")}</p>
+                <p className="text-xs font-bold text-on-surface">{t("home_clients")} ✨</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Card */}
+          <div className="bg-white/80 backdrop-blur-xl rounded-[40px] p-4 shadow-2xl max-w-sm w-full relative transform transition hover:-translate-y-2 duration-500">
+            <div className="absolute top-8 right-8 rtl:left-8 rtl:right-auto z-20 bg-black/60 backdrop-blur-sm text-white text-[10px] px-3 py-1 rounded-full uppercase tracking-widest font-semibold">
+              -15% OFF
+            </div>
+            <img
+              src="https://lh3.googleusercontent.com/aida/AP1WRLvFQ6_Dqrf5CLiUkwnzHPdRI2N2jxXH5sJfmXd6vJC-AKq-Ujzhtrpbn0FV82GFCx7nn-7DTHOOst_EVFLX1W38Y4kbTMViySrKu2sjpSoEYzXdXcHClWm-tafZvkt3VHr4f4znRdNb5NpAqMOxl3NN8MuTzrJrlS-rzthHTev8p62JJTgGFVXqDE4GZldpdxL18S0bZzZEFjGdzcrf-4qytu1yOWw9ffotg1BJg__xgJd9txgQ4SO949o"
+              alt="Signature Facial"
+              className="w-full h-80 object-cover rounded-[32px] mb-6"
+            />
+            <div className="px-4 pb-4">
+              <h3 className="font-headline-md text-2xl text-on-surface mb-1">Signature Facial</h3>
+              <p className="text-xs text-on-surface-variant mb-6">Luminous Renewal Serum</p>
+              <Link href="/services/face" className="flex items-center justify-between text-xs font-bold tracking-widest uppercase hover:text-primary transition-colors">
+                SHOP NOW
+                <div className="w-8 h-8 rounded-full border border-outline flex items-center justify-center bg-white shadow-sm">
+                  <span className="material-symbols-outlined text-[14px] rtl:rotate-180">arrow_outward</span>
+                </div>
               </Link>
             </div>
           </div>
+          
         </div>
+
+        {/* Floating Bottom Bar */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 w-[95%] max-w-4xl hidden lg:flex items-center justify-between bg-white/90 backdrop-blur-lg rounded-full py-4 px-8 shadow-xl">
+          <div className="flex items-center gap-2">
+             <span className="material-symbols-outlined text-[16px] text-primary">spa</span>
+             <span className="text-[10px] font-bold tracking-widest uppercase text-on-surface">{t("home_premium")}</span>
+          </div>
+          <div className="w-px h-4 bg-outline-variant"></div>
+          <div className="flex items-center gap-2">
+             <span className="material-symbols-outlined text-[16px] text-primary">diversity_1</span>
+             <span className="text-[10px] font-bold tracking-widest uppercase text-on-surface">{t("home_specialists")}</span>
+          </div>
+          <div className="w-px h-4 bg-outline-variant"></div>
+          <div className="flex items-center gap-2">
+             <span className="material-symbols-outlined text-[16px] text-primary">stars</span>
+             <span className="text-[10px] font-bold tracking-widest uppercase text-on-surface">{t("home_luxury")}</span>
+          </div>
+          <div className="w-px h-4 bg-outline-variant"></div>
+          <div className="flex items-center gap-2">
+             <span className="material-symbols-outlined text-[16px] text-primary">calendar_month</span>
+             <span className="text-[10px] font-bold tracking-widest uppercase text-on-surface">{t("home_easy")}</span>
+          </div>
+          
+          <div className="w-10 h-10 rounded-full bg-on-surface text-white flex items-center justify-center shadow-md cursor-pointer hover:bg-primary transition-colors">
+            <span className="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+          </div>
+        </div>
+
+        {/* Floating Calendar Button (Bottom Right) */}
+        <Link href="/book" className="absolute bottom-10 right-10 rtl:left-10 rtl:right-auto z-20 w-14 h-14 bg-[#eadbce] rounded-full flex items-center justify-center shadow-xl hover:bg-[#dccbc0] transition-colors duration-300">
+           <span className="material-symbols-outlined text-on-surface">calendar_month</span>
+        </Link>
       </section>
 
       {/* Brand Mission Section */}
-      <section className="max-w-[1440px] mx-auto px-6 md:px-10 mb-24 py-12 border-t border-outline-variant/20">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-          <div className="md:col-span-4">
-            <h2 className="font-label-sm uppercase tracking-[0.2em] text-sm text-on-surface-variant mb-2 font-bold">
-              {t("home_mission_title")}
+      <section className="max-w-[1440px] mx-auto px-6 md:px-10 mb-32 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+          <div className="md:col-span-3">
+            <h2 className="font-label-sm uppercase tracking-[0.3em] text-sm text-on-surface font-bold">
+              BRAND MISSION
             </h2>
           </div>
-          <div className="md:col-span-8">
-            <p className="font-headline-md text-xl md:text-2xl text-on-surface leading-relaxed mb-6 font-light">
-              {t("home_mission_desc")}
+          <div className="md:col-span-6 md:col-start-6">
+            <p className="font-body-lg text-lg md:text-xl text-on-surface leading-relaxed mb-8 font-serif">
+              The brand's goal is to give a feeling of luxury spa care without being over the top. We want to focus on the skincare experience and packaging should not be distracting.
             </p>
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 border border-outline px-6 py-2 rounded-full font-label-sm text-xs uppercase hover:bg-surface-container transition-colors"
+              className="inline-flex items-center justify-center border border-outline text-on-surface px-8 py-3 rounded-full font-label-sm text-xs uppercase tracking-widest hover:bg-surface-container transition-colors"
             >
-              {t("home_learn_more")}
+              {t("home_learn_more") || "LEARN MORE"}
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Services Categories (Bento Grid) */}
+      {/* Services Categories */}
       <section className="max-w-[1440px] mx-auto px-6 md:px-10 mb-12" id="services">
-        <h3 className="font-headline-md text-2xl md:text-3xl text-on-surface mb-8">
-          {t("shop_categories")}
-        </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Category - Body */}
           <Link
             href="/services/body"
-            className="glass-card rounded-[32px] p-6 hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[380px] bg-secondary-fixed/20 relative overflow-hidden"
+            className="rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[500px] relative overflow-hidden shadow-lg"
           >
-            <div className="flex justify-between items-start mb-auto relative z-10">
-              <span className="font-label-sm text-xs uppercase tracking-wider text-on-surface-variant font-semibold">
-                ( {t("cat_body")} )
-              </span>
-              <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity rtl:transform rtl:rotate-180">
-                arrow_outward
-              </span>
-            </div>
             <img
-              alt="Body Care treatments at Stitch"
-              className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-80"
+              alt="Body Care"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfv7_E_Xo5iybi8YAqW_ugR4FjF7UiDV2NxembWSGTcx79TsT8Np6SYE3WqVmnBAn0hiceGmcqxdHU9r1xmsMmC74dQODuh9QKxoXyMuU9PNrChPuaV8WgQMWn2wp180VNmB1GqtIdkI5PttYsEgYjV5NlgHiSJ663HxaKXbvPLlc4frzR19jt73DqC_7KgbsTutzgQLSmH7bykA3LT5mBciIoKGnHhVnoK1DZesq5z2ZnEVbC3fW2ikvt-iKF-3DaNJ1rFsfeKe8NPLE"
             />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/20"></div>
+            <div className="relative z-10 p-8">
+              <span className="font-label-sm text-sm uppercase tracking-[0.2em] text-white font-semibold shadow-black drop-shadow-md">
+                [ BODY ]
+              </span>
+            </div>
           </Link>
 
           {/* Category - Face */}
           <Link
             href="/services/face"
-            className="glass-card rounded-[32px] p-6 hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[380px] bg-secondary-fixed/20 relative overflow-hidden"
+            className="rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[500px] relative overflow-hidden shadow-lg"
           >
-            <div className="flex justify-between items-start mb-auto relative z-10">
-              <span className="font-label-sm text-xs uppercase tracking-wider text-on-surface-variant font-semibold">
-                ( {t("cat_face")} )
-              </span>
-              <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity rtl:transform rtl:rotate-180">
-                arrow_outward
-              </span>
-            </div>
             <img
-              alt="Face Care treatments at Stitch"
-              className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-80"
+              alt="Face Care"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsnEIY61Gw1qpRxIxgRu-iMOdq7sVFzuDyxXN_VDOP8EL7jK22hC3fOegODbPEhLKvIZvUHUBmBD117-VSTYUIB7xco9ZWEUyft1gTVtqCqPwDJkACO43on2URvWw00CQXBtztnapfPzBO8WrPgvcVMMfCgXNHZdxNuZfzvTnv8R5Bhj8AkTvt0ggSSIZmy5HpbFOZV7E6SmrgdTIBsWM9WGOXeDsV4Woe8v2Qm9fG_sWZyFdJC_52O1UPnNRsM-N0RTRMoZ4_1L11x5A"
             />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/20"></div>
+            <div className="relative z-10 p-8">
+              <span className="font-label-sm text-sm uppercase tracking-[0.2em] text-white font-semibold shadow-black drop-shadow-md">
+                [ {t("cat_face")} ]
+              </span>
+            </div>
           </Link>
 
           {/* Category - Hair */}
           <Link
             href="/services/hair"
-            className="glass-card rounded-[32px] p-6 hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[380px] bg-secondary-fixed/20 relative overflow-hidden"
+            className="rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[500px] relative overflow-hidden shadow-lg"
           >
-            <div className="flex justify-between items-start mb-auto relative z-10">
-              <span className="font-label-sm text-xs uppercase tracking-wider text-on-surface-variant font-semibold">
-                ( {t("cat_hair")} )
-              </span>
-              <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity rtl:transform rtl:rotate-180">
-                arrow_outward
-              </span>
-            </div>
             <img
-              alt="Hair Care treatments at Stitch"
-              className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-80"
+              alt="Hair Care"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuABdOpsllrn1OYQ60DEb_i9z-iu_B1SHsdPtcVvRRLhRdH8tsuYHxSYN2Ch75FsmeiCNKAPwd9D-mIXYaWmmMsYuWi_49oBf7Ar2dHu0XnUF-8HcXy5qjOS2HYZL5jduTzSdNEF2BPSUscPCkrY21KGlgoCa5LTflRNb7Y_5a8u6AESwO7dn82qlF5vDNC_LWkZAX12pUaInpuJ18bjVTaTQa9FcoGGvycdK_CSkHT-9-olvZ5Caj-AUgT9u6yw6xEfCPjVC_Eg1YLkkxw"
             />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/20"></div>
+            <div className="relative z-10 p-8">
+              <span className="font-label-sm text-sm uppercase tracking-[0.2em] text-white font-semibold shadow-black drop-shadow-md">
+                [ HAIR ]
+              </span>
+            </div>
           </Link>
 
           {/* Category - Other / Specialty */}
           <Link
             href="/services/specialty"
-            className="glass-card rounded-[32px] p-6 hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[380px] bg-secondary-fixed/20 overflow-hidden relative"
+            className="rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[500px] relative overflow-hidden shadow-lg"
           >
-            <div className="flex justify-between items-start mb-auto relative z-10">
-              <span className="font-label-sm text-xs uppercase tracking-wider text-on-surface-variant font-semibold">
-                ( {t("cat_other")} )
-              </span>
-              <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity rtl:transform rtl:rotate-180">
-                arrow_outward
-              </span>
-            </div>
             <img
-              alt="Other Specialty services at Stitch"
-              className="absolute inset-0 w-full h-full object-cover opacity-85 mix-blend-multiply"
+              alt="Other Specialty"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuAucgE2KvnmDjJCPx-CaDUz3Q6OxbI_YruXYSBjgXhEyJcbYce7CryjE-BeYO2cflB3g9Phj3LszfD3ioPRBDV0pVODO-qt6DT9W01Lj6ZBL7t0c-tIWKJspuegHVYUy_O0J7Bvtgg7oAWWqfC9siKAuxCkzkDCdyDWaKvTUwh6z6Rak3PtxCkZ77a8R4zMb1zSOOrLk1SK0Gj-8bBBGJDJyHR7VCF9MQjXfDHvk41hEPvQKC3nkZneN4eMH0QWgpTMTUgwQhRpi4as"
             />
-            <div className="absolute bottom-6 left-6 rtl:left-auto rtl:right-6 z-10">
-              <span className="font-headline-md text-lg text-on-surface transform -rotate-90 rtl:rotate-90 origin-bottom-left rtl:origin-bottom-right inline-block uppercase tracking-widest font-semibold">
+            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/20"></div>
+            <div className="relative z-10 p-8 flex justify-between">
+              <span className="font-label-sm text-sm uppercase tracking-[0.2em] text-white font-semibold shadow-black drop-shadow-md">
+                [ OTHER ]
+              </span>
+            </div>
+            <div className="absolute bottom-8 left-8 rtl:left-auto rtl:right-8 z-10">
+              <span className="font-headline-md text-lg text-white/90 transform -rotate-90 rtl:rotate-90 origin-bottom-left rtl:origin-bottom-right inline-block uppercase tracking-widest font-semibold">
                 {language === "ar" ? "الفعل" : "the act"}
               </span>
             </div>
