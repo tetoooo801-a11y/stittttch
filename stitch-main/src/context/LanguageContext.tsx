@@ -16,7 +16,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Navigation
     nav_home: "Home",
     nav_about: "About",
-    nav_services: "Services Hub",
+    nav_services: "Services",
     nav_booking: "Booking",
     nav_my_bookings: "My Bookings",
     nav_contact: "Contact",
@@ -251,7 +251,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Navigation
     nav_home: "الرئيسية",
     nav_about: "من نحن",
-    nav_services: "مركز الخدمات",
+    nav_services: "الخدمات",
     nav_booking: "الحجز",
     nav_my_bookings: "حجوزاتي",
     nav_contact: "اتصل بنا",

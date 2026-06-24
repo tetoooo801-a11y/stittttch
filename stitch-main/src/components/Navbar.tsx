@@ -89,7 +89,6 @@ export const Navbar: React.FC = () => {
           </div>
 
           <Link href="/book" className="text-on-surface-variant hover:text-primary transition-colors duration-300">{t("nav_booking")}</Link>
-          <Link href="/editorial" className="text-on-surface-variant hover:text-primary transition-colors duration-300">{t("editorial_title")}</Link>
           <Link href="/contact" className="text-on-surface-variant hover:text-primary transition-colors duration-300">{t("nav_contact")}</Link>
         </div>
 
@@ -150,7 +149,6 @@ export const Navbar: React.FC = () => {
           <Link href="/about" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_about")}</Link>
           <Link href="/services" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_services")}</Link>
           <Link href="/book" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_booking")}</Link>
-          <Link href="/editorial" onClick={() => setIsMobileMenuOpen(false)}>{t("editorial_title")}</Link>
           <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_contact")}</Link>
           {user ? (
             <>
