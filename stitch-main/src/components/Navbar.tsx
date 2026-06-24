@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { useAuth } from "@/context/AuthContext";
@@ -13,6 +13,17 @@ export const Navbar: React.FC = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const servicesDropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(event.target as Node)) {
+        setIsServicesOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -70,19 +81,21 @@ export const Navbar: React.FC = () => {
 
           <div
             className="relative"
-            onMouseEnter={() => setIsServicesOpen(true)}
-            onMouseLeave={() => setIsServicesOpen(false)}
+            ref={servicesDropdownRef}
           >
-            <button className="text-on-surface-variant hover:text-primary transition-colors duration-300 flex items-center gap-1 cursor-pointer">
+            <button 
+              onClick={() => setIsServicesOpen(!isServicesOpen)}
+              className="text-on-surface-variant hover:text-primary transition-colors duration-300 flex items-center gap-1 cursor-pointer"
+            >
               {t("nav_services")}
             </button>
             {isServicesOpen && (
               <div className="absolute top-full left-0 rtl:right-0 rtl:left-auto mt-2 w-48 bg-white/95 backdrop-blur-xl border border-outline-variant/30 rounded-xl shadow-2xl z-50 p-2">
-                <Link href="/services/face" className="block px-4 py-2 hover:bg-surface-container rounded-lg text-on-surface-variant">{t("cat_face")}</Link>
-                <Link href="/services/hair" className="block px-4 py-2 hover:bg-surface-container rounded-lg text-on-surface-variant">{t("cat_hair")}</Link>
-                <Link href="/services/body" className="block px-4 py-2 hover:bg-surface-container rounded-lg text-on-surface-variant">{t("cat_body")}</Link>
-                <Link href="/services/specialty" className="block px-4 py-2 hover:bg-surface-container rounded-lg text-on-surface-variant">{t("cat_specialty")}</Link>
-                <Link href="/services" className="block px-4 py-2 hover:bg-surface-container rounded-lg text-on-surface-variant">{t("view_all")}</Link>
+                <Link href="/services/face" onClick={() => setIsServicesOpen(false)} className="block px-4 py-2 hover:bg-surface-container rounded-lg text-on-surface-variant">{t("cat_face")}</Link>
+                <Link href="/services/hair" onClick={() => setIsServicesOpen(false)} className="block px-4 py-2 hover:bg-surface-container rounded-lg text-on-surface-variant">{t("cat_hair")}</Link>
+                <Link href="/services/body" onClick={() => setIsServicesOpen(false)} className="block px-4 py-2 hover:bg-surface-container rounded-lg text-on-surface-variant">{t("cat_body")}</Link>
+                <Link href="/services/specialty" onClick={() => setIsServicesOpen(false)} className="block px-4 py-2 hover:bg-surface-container rounded-lg text-on-surface-variant">{t("cat_specialty")}</Link>
+                <Link href="/services" onClick={() => setIsServicesOpen(false)} className="block px-4 py-2 hover:bg-surface-container rounded-lg text-on-surface-variant">{t("view_all")}</Link>
               </div>
             )}
           </div>
