@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useState, use } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { api, Service, serviceTitle, serviceDesc } from "@/lib/api";
@@ -9,8 +10,9 @@ interface PageProps {
   params: Promise<{ category: string }>;
 }
 
-export default function CategoryPage({ params }: PageProps) {
-  const { category } = use(params);
+export default function CategoryPage() {
+  const params = useParams();
+  const category = params.category as string;
   const { t, language } = useLanguage();
   const [services, setServices] = useState<Service[]>([]);
   const [bannerUrl, setBannerUrl] = useState("");
