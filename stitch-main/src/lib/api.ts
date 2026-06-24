@@ -127,6 +127,36 @@ export interface Cart {
   items: CartItem[];
 }
 
+const mockServices: Service[] = [
+  {
+    _id: "1", slug: "luminous-renewal-serum", category: "face", titleKey: "prod_1_title", descKey: "prod_1_desc",
+    titleEn: "Luminous Renewal Serum", titleAr: "مصل التجديد المضيء", descEn: "A potent blend of botanical extracts to restore youthful radiance.", descAr: "مزيج قوي من المستخلصات النباتية لاستعادة إشراقة الشباب.",
+    duration: 60, price: 120, rating: 4.9, reviewsCount: 128, badgeKey: "badge_bestseller", imageUrl: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80",
+    processDescEn: "Experience the epitome of skincare luxury with our signature luminous renewal treatment.",
+    processDescAr: "جربي قمة الفخامة في العناية بالبشرة مع علاجنا المميز."
+  },
+  {
+    _id: "2", slug: "restorative-night-cream", category: "face", titleKey: "prod_2_title", descKey: "prod_2_desc",
+    titleEn: "Restorative Night Cream", titleAr: "كريم الليل المجدد", descEn: "Deep hydration and cellular repair while you sleep.", descAr: "ترطيب عميق وإصلاح خلوي أثناء النوم.",
+    duration: 45, price: 95, rating: 4.8, reviewsCount: 84, imageUrl: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    _id: "3", slug: "botanical-body-oil", category: "body", titleKey: "prod_3_title", descKey: "prod_3_desc",
+    titleEn: "Botanical Body Oil", titleAr: "زيت الجسم النباتي", descEn: "Nourishing essential oils for an all-over healthy glow.", descAr: "زيوت أساسية مغذية لتوهج صحي شامل.",
+    duration: 90, price: 150, rating: 5.0, reviewsCount: 205, badgeKey: "badge_new", imageUrl: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    _id: "4", slug: "purifying-clay-mask", category: "face", titleKey: "prod_4_title", descKey: "prod_4_desc",
+    titleEn: "Purifying Clay Mask", titleAr: "قناع الطين المنقي", descEn: "Detoxifying French green clay for clear, refined pores.", descAr: "طين أخضر فرنسي مزيل للسموم لمسام نقية وصافية.",
+    duration: 30, price: 65, rating: 4.7, reviewsCount: 56, imageUrl: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    _id: "5", slug: "signature-hair-cut", category: "hair", titleKey: "hair_cut_title", descKey: "hair_cut_desc",
+    titleEn: "Signature Precision Cut", titleAr: "قصة التوقيع الدقيقة", descEn: "Tailored precision cutting customized to suit your facial structure.", descAr: "قص دقيق ومخصص بشكل فريد ليناسب ملامح وجهك.",
+    duration: 60, price: 180, rating: 4.9, reviewsCount: 340, imageUrl: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80",
+  }
+];
+
 export const api = {
   auth: {
     register: (body: { name: string; email: string; password: string }) =>
@@ -175,40 +205,45 @@ export const api = {
         return {
           success: true,
           data: {
-            services: [
-              {
-                _id: "1", slug: "luminous-renewal-serum", category: "face", titleKey: "prod_1_title", descKey: "prod_1_desc",
-                titleEn: "Luminous Renewal Serum", titleAr: "مصل التجديد المضيء", descEn: "A potent blend of botanical extracts to restore youthful radiance.", descAr: "مزيج قوي من المستخلصات النباتية لاستعادة إشراقة الشباب.",
-                duration: 60, price: 120, rating: 4.9, reviewsCount: 128, badgeKey: "badge_bestseller", imageUrl: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80",
-              },
-              {
-                _id: "2", slug: "restorative-night-cream", category: "face", titleKey: "prod_2_title", descKey: "prod_2_desc",
-                titleEn: "Restorative Night Cream", titleAr: "كريم الليل المجدد", descEn: "Deep hydration and cellular repair while you sleep.", descAr: "ترطيب عميق وإصلاح خلوي أثناء النوم.",
-                duration: 45, price: 95, rating: 4.8, reviewsCount: 84, imageUrl: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&w=600&q=80",
-              },
-              {
-                _id: "3", slug: "botanical-body-oil", category: "body", titleKey: "prod_3_title", descKey: "prod_3_desc",
-                titleEn: "Botanical Body Oil", titleAr: "زيت الجسم النباتي", descEn: "Nourishing essential oils for an all-over healthy glow.", descAr: "زيوت أساسية مغذية لتوهج صحي شامل.",
-                duration: 90, price: 150, rating: 5.0, reviewsCount: 205, badgeKey: "badge_new", imageUrl: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=600&q=80",
-              },
-              {
-                _id: "4", slug: "purifying-clay-mask", category: "face", titleKey: "prod_4_title", descKey: "prod_4_desc",
-                titleEn: "Purifying Clay Mask", titleAr: "قناع الطين المنقي", descEn: "Detoxifying French green clay for clear, refined pores.", descAr: "طين أخضر فرنسي مزيل للسموم لمسام نقية وصافية.",
-                duration: 30, price: 65, rating: 4.7, reviewsCount: 56, imageUrl: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80",
-              }
-            ].filter(s => !params?.category || params.category === "all" || s.category === params.category)
+            services: mockServices.filter(s => !params?.category || params.category === "all" || s.category === params.category)
           }
         };
       }
     },
-    byCategory: (category: string) =>
-      request<{ success: boolean; data: { category: string; bannerUrl: string; services: Service[] } }>(
-        `/api/services/category/${category}`
-      ),
-    get: (id: string) =>
-      request<{ success: boolean; data: { service: Service; reviews: Review[] } }>(
-        `/api/services/${id}`
-      ),
+    byCategory: async (category: string) => {
+      try {
+        return await request<{ success: boolean; data: { category: string; bannerUrl: string; services: Service[] } }>(
+          `/api/services/category/${category}`
+        );
+      } catch (e) {
+        return {
+          success: true,
+          data: {
+            category,
+            bannerUrl: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=80",
+            services: mockServices.filter(s => s.category === category)
+          }
+        };
+      }
+    },
+    get: async (id: string) => {
+      try {
+        return await request<{ success: boolean; data: { service: Service; reviews: Review[] } }>(
+          `/api/services/${id}`
+        );
+      } catch (e) {
+        return {
+          success: true,
+          data: {
+            service: mockServices.find(s => s._id === id) || mockServices[0],
+            reviews: [
+              { _id: "r1", authorName: "Emma W.", title: "Amazing experience", text: "Truly relaxing and professional.", rating: 5 },
+              { _id: "r2", authorName: "Sarah M.", title: "Will come back", text: "My skin feels so refreshed.", rating: 4 }
+            ]
+          }
+        };
+      }
+    },
   },
   bookings: {
     create: (body: Record<string, unknown>) =>
