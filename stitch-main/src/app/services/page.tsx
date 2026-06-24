@@ -27,10 +27,6 @@ export default function ServicesPage() {
   }, [activeFilter, sortBy, t]);
 
   const handleAddToCart = async (serviceId: string) => {
-    if (!user) {
-      window.location.href = "/signin";
-      return;
-    }
     setAddingId(serviceId);
     try {
       await api.cart.add(serviceId);

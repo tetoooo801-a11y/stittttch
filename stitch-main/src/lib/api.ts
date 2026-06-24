@@ -273,21 +273,72 @@ export const api = {
       }),
   },
   cart: {
-    get: () => request<{ success: boolean; data: { cart: Cart } }>("/api/cart"),
-    add: (serviceId: string, quantity = 1) =>
-      request<{ success: boolean; data: { cart: Cart } }>("/api/cart", {
-        method: "POST",
-        body: JSON.stringify({ serviceId, quantity }),
-      }),
-    updateItem: (itemId: string, quantity: number) =>
-      request<{ success: boolean; data: { cart: Cart } }>(`/api/cart/items/${itemId}`, {
-        method: "PATCH",
-        body: JSON.stringify({ quantity }),
-      }),
-    removeItem: (itemId: string) =>
-      request<{ success: boolean; data: { cart: Cart } }>(`/api/cart/items/${itemId}`, {
-        method: "DELETE",
-      }),
+    get: async () => {
+      try {
+        return await request<{ success: boolean; data: { cart: Cart } }>("/api/cart");
+      } catch (e) {
+        let cartStr = "{}";
+        if (typeof window !== "undefined") cartStr = localStorage.getItem("demo_cart") || "{}";
+        const parsed = JSON.parse(cartStr);
+        return { success: true, data: { cart: { _id: "demo_cart", items: parsed.items || [] } } };
+      }
+    },
+    add: async (serviceId: string, quantity = 1) => {
+      try {
+        return await request<{ success: boolean; data: { cart: Cart } }>("/api/cart", {
+          method: "POST",
+          body: JSON.stringify({ serviceId, quantity }),
+        });
+      } catch (e) {
+        if (typeof window === "undefined") throw e;
+        const cartStr = localStorage.getItem("demo_cart") || "{}";
+        const parsed = JSON.parse(cartStr);
+        const items: CartItem[] = parsed.items || [];
+        
+        const existing = items.find(i => i.service._id === serviceId);
+        if (existing) {
+          existing.quantity += quantity;
+        } else {
+          // Find the service from mock services
+          const service = mockServices.find(s => s._id === serviceId) || {
+            _id: serviceId, titleEn: "Demo Service", price: 100, imageUrl: "", category: "face", titleKey: "", descKey: ""
+          } as any;
+          items.push({ _id: `item_${Date.now()}`, service, quantity });
+        }
+        
+        localStorage.setItem("demo_cart", JSON.stringify({ items }));
+        return { success: true, data: { cart: { _id: "demo_cart", items } } };
+      }
+    },
+    updateItem: async (itemId: string, quantity: number) => {
+      try {
+        return await request<{ success: boolean; data: { cart: Cart } }>(`/api/cart/items/${itemId}`, {
+          method: "PATCH",
+          body: JSON.stringify({ quantity }),
+        });
+      } catch (e) {
+        if (typeof window === "undefined") throw e;
+        const parsed = JSON.parse(localStorage.getItem("demo_cart") || "{}");
+        const items: CartItem[] = parsed.items || [];
+        const target = items.find(i => i._id === itemId);
+        if (target) target.quantity = quantity;
+        localStorage.setItem("demo_cart", JSON.stringify({ items }));
+        return { success: true, data: { cart: { _id: "demo_cart", items } } };
+      }
+    },
+    removeItem: async (itemId: string) => {
+      try {
+        return await request<{ success: boolean; data: { cart: Cart } }>(`/api/cart/items/${itemId}`, {
+          method: "DELETE",
+        });
+      } catch (e) {
+        if (typeof window === "undefined") throw e;
+        const parsed = JSON.parse(localStorage.getItem("demo_cart") || "{}");
+        const items: CartItem[] = (parsed.items || []).filter((i: any) => i._id !== itemId);
+        localStorage.setItem("demo_cart", JSON.stringify({ items }));
+        return { success: true, data: { cart: { _id: "demo_cart", items } } };
+      }
+    },
   },
   editorial: {
     list: () =>

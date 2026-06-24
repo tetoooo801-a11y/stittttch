@@ -18,10 +18,6 @@ export default function CartPage() {
 
   useEffect(() => {
     if (authLoading) return;
-    if (!user) {
-      router.replace("/signin");
-      return;
-    }
     api.cart
       .get()
       .then((res) => setCart(res.data.cart))

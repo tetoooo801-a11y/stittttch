@@ -32,10 +32,6 @@ export const Navbar: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (!user) {
-      setCartCount(0);
-      return;
-    }
     const loadCart = () => {
       api.cart
         .get()
@@ -48,7 +44,7 @@ export const Navbar: React.FC = () => {
     loadCart();
     window.addEventListener("cart-updated", loadCart);
     return () => window.removeEventListener("cart-updated", loadCart);
-  }, [user]);
+  }, []);
 
   const handleLogout = async () => {
     await logout();
@@ -105,16 +101,16 @@ export const Navbar: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-4 text-primary">
-          {user ? (
-            <Link href="/cart" className="relative hover:text-primary-container transition-all p-2">
-              <span className="material-symbols-outlined">shopping_cart</span>
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-primary text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
-            </Link>
-          ) : (
+          <Link href="/cart" className="relative hover:text-primary-container transition-all p-2">
+            <span className="material-symbols-outlined">shopping_cart</span>
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-primary text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center">
+                {cartCount}
+              </span>
+            )}
+          </Link>
+
+          {!user && (
             <Link href="/signin" className="hidden md:block text-xs uppercase tracking-widest hover:text-primary-container">
               {t("nav_signin")}
             </Link>
@@ -162,10 +158,10 @@ export const Navbar: React.FC = () => {
           <Link href="/services" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_services")}</Link>
           <Link href="/book" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_booking")}</Link>
           <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_contact")}</Link>
+          <Link href="/cart" onClick={() => setIsMobileMenuOpen(false)}>{t("cart_title")}</Link>
           {user ? (
             <>
               <Link href="/bookings" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_my_bookings")}</Link>
-              <Link href="/cart" onClick={() => setIsMobileMenuOpen(false)}>{t("cart_title")}</Link>
               <button onClick={handleLogout} className="text-start cursor-pointer">{t("nav_logout")}</button>
             </>
           ) : (
