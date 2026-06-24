@@ -36,7 +36,7 @@ export const Navbar: React.FC = () => {
       api.cart
         .get()
         .then((res) => {
-          const count = res.data.cart.items.reduce((s, i) => s + i.quantity, 0);
+          const count = res.data.cart.items.reduce((s: number, i: any) => s + i.quantity, 0);
           setCartCount(count);
         })
         .catch(() => setCartCount(0));
