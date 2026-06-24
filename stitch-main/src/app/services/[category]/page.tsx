@@ -18,6 +18,7 @@ export default function CategoryPage() {
   const [bannerUrl, setBannerUrl] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [addingId, setAddingId] = useState<string | null>(null);
 
   useEffect(() => {
     setLoading(true);
@@ -30,6 +31,18 @@ export default function CategoryPage() {
       .catch(() => setError(t("error_loading")))
       .finally(() => setLoading(false));
   }, [category, t]);
+
+  const handleAddToCart = async (serviceId: string) => {
+    setAddingId(serviceId);
+    try {
+      await api.cart.add(serviceId);
+      window.dispatchEvent(new Event("cart-updated"));
+    } catch (err) {
+      alert(t("error_loading"));
+    } finally {
+      setAddingId(null);
+    }
+  };
 
   const isHair = category === "hair";
   const titleKey = category === "face" ? "cat_face" : category === "body" ? "cat_body" : category === "hair" ? "cat_hair" : "cat_specialty";
@@ -100,10 +113,19 @@ export default function CategoryPage() {
                 <h3 className="font-headline-md text-xl text-on-surface mb-2">{serviceTitle(item, language, t)}</h3>
                 <p className="font-body-md text-sm text-on-surface-variant mb-6 flex-grow">{serviceDesc(item, language, t)}</p>
                 <div className="flex justify-between items-center mt-auto border-t border-outline-variant/20 pt-4">
-                  <span className="font-body-lg text-sm text-on-surface">{item.duration} Mins | ${item.price.toFixed(2)}</span>
-                  <Link href={`/book?serviceId=${item._id}`} className="bg-primary text-white font-label-sm text-xs uppercase px-4 py-2 rounded-full hover:bg-on-surface transition-colors">
-                    {t("book_now")}
-                  </Link>
+                  <span className="font-body-lg text-sm text-on-surface hidden xl:block">{item.duration} Mins | ${item.price.toFixed(2)}</span>
+                  <div className="flex gap-2 w-full xl:w-auto justify-between xl:justify-end">
+                    <button
+                      onClick={() => handleAddToCart(item._id)}
+                      disabled={addingId === item._id}
+                      className="bg-transparent border border-primary text-primary font-label-sm text-[10px] md:text-xs uppercase px-3 md:px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors cursor-pointer disabled:opacity-60"
+                    >
+                      {addingId === item._id ? "..." : t("add_to_cart")}
+                    </button>
+                    <Link href={`/book?serviceId=${item._id}`} className="bg-primary text-white font-label-sm text-[10px] md:text-xs uppercase px-3 md:px-4 py-2 rounded-full hover:bg-on-surface transition-colors text-center">
+                      {t("book_now")}
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
