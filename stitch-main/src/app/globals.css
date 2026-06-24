@@ -82,6 +82,19 @@ body {
   transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Enforce Editorial Muse Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headline-md);
+}
+
+.font-label-sm, .font-body-md, .font-body-lg {
+  font-family: var(--font-body-md) !important;
+}
+
+.font-headline-lg, .font-headline-md, .font-display-xl {
+  font-family: var(--font-headline-md) !important;
+}
+
 /* Glassmorphism Styles */
 .glass-card {
   background: rgba(255, 255, 255, 0.7);
