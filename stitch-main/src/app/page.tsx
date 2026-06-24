@@ -16,7 +16,7 @@ export default function Home() {
           <div className="w-full md:w-1/2 h-1/2 md:h-full bg-[#f9f8f6]"></div>
           <div className="w-full md:w-1/2 h-1/2 md:h-full relative">
             <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo4aAiofl4r9H6rcHe3LCi_l1A61KjkC-QKMkojO2he28wH0OwkzugtwIbSHQ0cZHanRNmFnkj-oVJjvJBNRsqUxiurL329bDmwoEy2usjEFoBiQ8lSb4fyIEGhDBeCBc_-4Ow_1HWAzHjyRR0euLj_NOtZUS5a9Kt9DpiSYATG76VSEI7jaat4clfMufkHQqVKRZt-Ysi_IQ58OO1smrfvoDmrJ2ZaVLKHIrH3JN_Oxe22mihXSijMAxCl6W3lS65xeuel1r9CXwx"
+              src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1200&q=80"
               alt="Salon Background"
               className="w-full h-full object-cover opacity-60 blur-[2px]"
             />
@@ -48,7 +48,7 @@ export default function Home() {
                 className="bg-[#6b5a4d] text-white px-8 py-3.5 rounded-full font-body-md text-sm hover:bg-[#5a4a3e] transition-colors duration-300 shadow-md flex items-center gap-2"
               >
                 {t("hero_book")}
-                <span className="material-symbols-outlined text-[18px] rtl:rotate-180">arrow_forward</span>
+                <svg className="w-4 h-4 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </Link>
               <Link
                 href="/services"
@@ -78,7 +78,7 @@ export default function Home() {
               -15% OFF
             </div>
             <img
-              src="https://lh3.googleusercontent.com/aida/AP1WRLvFQ6_Dqrf5CLiUkwnzHPdRI2N2jxXH5sJfmXd6vJC-AKq-Ujzhtrpbn0FV82GFCx7nn-7DTHOOst_EVFLX1W38Y4kbTMViySrKu2sjpSoEYzXdXcHClWm-tafZvkt3VHr4f4znRdNb5NpAqMOxl3NN8MuTzrJrlS-rzthHTev8p62JJTgGFVXqDE4GZldpdxL18S0bZzZEFjGdzcrf-4qytu1yOWw9ffotg1BJg__xgJd9txgQ4SO949o"
+              src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80"
               alt="Signature Facial"
               className="w-full h-80 object-cover rounded-[32px] mb-6"
             />
@@ -88,7 +88,7 @@ export default function Home() {
               <Link href="/services/face" className="flex items-center justify-between text-xs font-bold tracking-widest uppercase hover:text-primary transition-colors">
                 SHOP NOW
                 <div className="w-8 h-8 rounded-full border border-outline flex items-center justify-center bg-white shadow-sm">
-                  <span className="material-symbols-outlined text-[14px] rtl:rotate-180">arrow_outward</span>
+                  <svg className="w-4 h-4 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
                 </div>
               </Link>
             </div>
@@ -162,7 +162,7 @@ export default function Home() {
             <img
               alt="Body Care"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfv7_E_Xo5iybi8YAqW_ugR4FjF7UiDV2NxembWSGTcx79TsT8Np6SYE3WqVmnBAn0hiceGmcqxdHU9r1xmsMmC74dQODuh9QKxoXyMuU9PNrChPuaV8WgQMWn2wp180VNmB1GqtIdkI5PttYsEgYjV5NlgHiSJ663HxaKXbvPLlc4frzR19jt73DqC_7KgbsTutzgQLSmH7bykA3LT5mBciIoKGnHhVnoK1DZesq5z2ZnEVbC3fW2ikvt-iKF-3DaNJ1rFsfeKe8NPLE"
+              src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&q=80"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/20"></div>
             <div className="relative z-10 p-8">
@@ -180,7 +180,7 @@ export default function Home() {
             <img
               alt="Face Care"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsnEIY61Gw1qpRxIxgRu-iMOdq7sVFzuDyxXN_VDOP8EL7jK22hC3fOegODbPEhLKvIZvUHUBmBD117-VSTYUIB7xco9ZWEUyft1gTVtqCqPwDJkACO43on2URvWw00CQXBtztnapfPzBO8WrPgvcVMMfCgXNHZdxNuZfzvTnv8R5Bhj8AkTvt0ggSSIZmy5HpbFOZV7E6SmrgdTIBsWM9WGOXeDsV4Woe8v2Qm9fG_sWZyFdJC_52O1UPnNRsM-N0RTRMoZ4_1L11x5A"
+              src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=600&q=80"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/20"></div>
             <div className="relative z-10 p-8">
@@ -198,7 +198,7 @@ export default function Home() {
             <img
               alt="Hair Care"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuABdOpsllrn1OYQ60DEb_i9z-iu_B1SHsdPtcVvRRLhRdH8tsuYHxSYN2Ch75FsmeiCNKAPwd9D-mIXYaWmmMsYuWi_49oBf7Ar2dHu0XnUF-8HcXy5qjOS2HYZL5jduTzSdNEF2BPSUscPCkrY21KGlgoCa5LTflRNb7Y_5a8u6AESwO7dn82qlF5vDNC_LWkZAX12pUaInpuJ18bjVTaTQa9FcoGGvycdK_CSkHT-9-olvZ5Caj-AUgT9u6yw6xEfCPjVC_Eg1YLkkxw"
+              src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/20"></div>
             <div className="relative z-10 p-8">
@@ -216,7 +216,7 @@ export default function Home() {
             <img
               alt="Other Specialty"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAucgE2KvnmDjJCPx-CaDUz3Q6OxbI_YruXYSBjgXhEyJcbYce7CryjE-BeYO2cflB3g9Phj3LszfD3ioPRBDV0pVODO-qt6DT9W01Lj6ZBL7t0c-tIWKJspuegHVYUy_O0J7Bvtgg7oAWWqfC9siKAuxCkzkDCdyDWaKvTUwh6z6Rak3PtxCkZ77a8R4zMb1zSOOrLk1SK0Gj-8bBBGJDJyHR7VCF9MQjXfDHvk41hEPvQKC3nkZneN4eMH0QWgpTMTUgwQhRpi4as"
+              src="https://images.unsplash.com/photo-1615397323214-3a216f446059?auto=format&fit=crop&w=600&q=80"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/20"></div>
             <div className="relative z-10 p-8 flex justify-between">
