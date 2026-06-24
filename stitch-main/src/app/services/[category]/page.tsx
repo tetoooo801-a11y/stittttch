@@ -19,6 +19,7 @@ export default function CategoryPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [addingId, setAddingId] = useState<string | null>(null);
+  const [addedId, setAddedId] = useState<string | null>(null);
 
   useEffect(() => {
     setLoading(true);
@@ -37,6 +38,8 @@ export default function CategoryPage() {
     try {
       await api.cart.add(serviceId);
       window.dispatchEvent(new Event("cart-updated"));
+      setAddedId(serviceId);
+      setTimeout(() => setAddedId(null), 2000);
     } catch (err) {
       alert(t("error_loading"));
     } finally {
@@ -117,10 +120,14 @@ export default function CategoryPage() {
                   <div className="flex gap-2 w-full xl:w-auto justify-between xl:justify-end">
                     <button
                       onClick={() => handleAddToCart(item._id)}
-                      disabled={addingId === item._id}
-                      className="bg-transparent border border-primary text-primary font-label-sm text-[10px] md:text-xs uppercase px-3 md:px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors cursor-pointer disabled:opacity-60"
+                      disabled={addingId === item._id || addedId === item._id}
+                      className={`font-label-sm text-[10px] md:text-xs uppercase px-3 md:px-4 py-2 rounded-full transition-colors cursor-pointer ${
+                        addedId === item._id 
+                          ? "bg-green-700 text-white border border-green-700 disabled:opacity-100" 
+                          : "bg-transparent border border-primary text-primary hover:bg-primary hover:text-white disabled:opacity-60"
+                      }`}
                     >
-                      {addingId === item._id ? "..." : t("add_to_cart")}
+                      {addingId === item._id ? "..." : addedId === item._id ? `✓ ${language === "ar" ? "تم" : "Added"}` : t("add_to_cart")}
                     </button>
                     <Link href={`/book?serviceId=${item._id}`} className="bg-primary text-white font-label-sm text-[10px] md:text-xs uppercase px-3 md:px-4 py-2 rounded-full hover:bg-on-surface transition-colors text-center">
                       {t("book_now")}

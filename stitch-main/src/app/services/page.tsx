@@ -15,6 +15,7 @@ export default function ServicesPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [addingId, setAddingId] = useState<string | null>(null);
+  const [addedId, setAddedId] = useState<string | null>(null);
 
   useEffect(() => {
     setLoading(true);
@@ -31,6 +32,8 @@ export default function ServicesPage() {
     try {
       await api.cart.add(serviceId);
       window.dispatchEvent(new Event("cart-updated"));
+      setAddedId(serviceId);
+      setTimeout(() => setAddedId(null), 2000);
     } catch (err) {
       alert(err instanceof ApiError ? err.message : t("error_loading"));
     } finally {
@@ -122,10 +125,14 @@ export default function ServicesPage() {
                     </Link>
                     <button
                       onClick={() => handleAddToCart(product._id)}
-                      disabled={addingId === product._id}
-                      className="flex-1 bg-primary text-white font-label-sm text-xs uppercase py-3 rounded-lg hover:bg-on-surface transition-colors cursor-pointer disabled:opacity-60"
+                      disabled={addingId === product._id || addedId === product._id}
+                      className={`flex-1 font-label-sm text-xs uppercase py-3 rounded-lg transition-colors cursor-pointer ${
+                        addedId === product._id 
+                          ? "bg-green-700 text-white disabled:opacity-100" 
+                          : "bg-primary text-white hover:bg-on-surface disabled:opacity-60"
+                      }`}
                     >
-                      {addingId === product._id ? "..." : t("add_to_cart")}
+                      {addingId === product._id ? "..." : addedId === product._id ? `✓ ${language === "ar" ? "تم" : "Added"}` : t("add_to_cart")}
                     </button>
                   </div>
                 </div>
