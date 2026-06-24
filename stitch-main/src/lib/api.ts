@@ -317,3 +317,4 @@ export function serviceDesc(service: Service, lang: "en" | "ar", t: (k: string) 
   if (translated !== service.descKey) return translated;
   return service.descEn;
 }
+// Force cache invalidation for images
