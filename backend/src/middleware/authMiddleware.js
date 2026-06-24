@@ -5,7 +5,7 @@ import { camelize } from "../utils/camelize.js";
 
 export async function authMiddleware(req, res, next) {
   try {
-    const token = req.cookies?.token;
+    const token = req.cookies?.token || req.headers.authorization?.split(" ")[1];
 
     if (!token) {
       return res.status(401).json({ success: false, message: "Authentication required" });
@@ -31,7 +31,7 @@ export async function authMiddleware(req, res, next) {
 
 export async function optionalAuth(req, _res, next) {
   try {
-    const token = req.cookies?.token;
+    const token = req.cookies?.token || req.headers.authorization?.split(" ")[1];
     if (token) {
       const decoded = jwt.verify(token, env.jwtSecret);
       const { data: user } = await supabase

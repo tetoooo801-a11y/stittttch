@@ -34,7 +34,7 @@ export async function register(req, res, next) {
     res.status(201).json({
       success: true,
       message: "Registration successful",
-      data: { user: camelize(user) },
+      data: { user: camelize(user), token },
     });
   } catch (error) {
     next(error);
@@ -62,7 +62,7 @@ export async function login(req, res, next) {
     res.json({
       success: true,
       message: "Login successful",
-      data: { user: camelize(user) },
+      data: { user: camelize(user), token },
     });
   } catch (error) {
     next(error);

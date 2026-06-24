@@ -15,13 +15,18 @@ async function request<T>(
   path: string,
   options: RequestInit = {}
 ): Promise<T> {
+  const reqHeaders: Record<string, string> = {
+    "Content-Type": "application/json",
+    ...(options.headers as Record<string, string> || {}),
+  };
+  if (typeof window !== "undefined") {
+    const token = localStorage.getItem("token");
+    if (token) reqHeaders.Authorization = `Bearer ${token}`;
+  }
+
   const res = await fetch(`${API_URL}${path}`, {
     ...options,
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
+    headers: reqHeaders,
   });
 
   const data = await res.json().catch(() => ({}));

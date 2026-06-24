@@ -20,10 +20,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const refreshUser = useCallback(async () => {
     try {
+      if (typeof window !== "undefined" && !localStorage.getItem("token")) {
+        throw new Error("No token");
+      }
       const res = await api.auth.me();
       setUser(res.data.user);
     } catch {
       setUser(null);
+      if (typeof window !== "undefined") localStorage.removeItem("token");
     }
   }, []);
 
@@ -33,16 +37,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (email: string, password: string) => {
     const res = await api.auth.login({ email, password });
+    if (typeof window !== "undefined") localStorage.setItem("token", (res.data as any).token);
     setUser(res.data.user);
   };
 
   const register = async (name: string, email: string, password: string) => {
     const res = await api.auth.register({ name, email, password });
+    if (typeof window !== "undefined") localStorage.setItem("token", (res.data as any).token);
     setUser(res.data.user);
   };
 
   const logout = async () => {
     await api.auth.logout();
+    if (typeof window !== "undefined") localStorage.removeItem("token");
     setUser(null);
   };
 
