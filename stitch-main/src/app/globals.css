@@ -160,10 +160,13 @@ html[lang="ar"] h4,
 html[lang="ar"] h5,
 html[lang="ar"] h6,
 html[lang="ar"] p,
-html[lang="ar"] span,
 html[lang="ar"] a,
 html[lang="ar"] button {
   font-family: var(--font-arabic) !important;
+}
+
+html[lang="ar"] span:not(.material-symbols-outlined) {
+  font-family: var(--font-arabic);
 }
 
 /* Scrollbar customization */
