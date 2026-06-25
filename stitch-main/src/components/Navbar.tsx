@@ -109,6 +109,10 @@ export const Navbar: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-4 text-primary">
+          <Link href="/search" className="flex items-center justify-center hover:text-primary-container transition-colors cursor-pointer p-2">
+            <span className="material-symbols-outlined text-[18px]">search</span>
+          </Link>
+
           <Link href="/cart" className="relative hover:text-primary-container transition-all p-2">
             <span className="material-symbols-outlined">shopping_cart</span>
             {cartCount > 0 && (
