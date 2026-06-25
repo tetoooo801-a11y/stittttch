@@ -125,7 +125,7 @@ export default function Home() {
       {/* Our Services */}
       <section className="max-w-[1440px] mx-auto px-6 md:px-10 mb-[100px] md:mb-[160px]">
         <div className="text-center mb-10">
-          <h2 className="font-headline-md text-4xl text-on-surface mb-4">Our Services</h2>
+          <h2 className="font-headline-md text-4xl text-on-surface mb-4">OUR SERVICES</h2>
           <p className="font-body-md text-on-surface-variant text-sm">Bespoke care for every part of you.</p>
         </div>
         <div className="flex flex-col gap-5 md:grid md:grid-cols-4 md:gap-6">
