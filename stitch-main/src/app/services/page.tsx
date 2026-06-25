@@ -67,7 +67,6 @@ export default function ServicesPage() {
               { key: "face", label: t("cat_face") },
               { key: "hair", label: t("cat_hair") },
               { key: "body", label: t("cat_body") },
-              { key: "accessories", label: t("cat_accessories") },
             ].map((tab) => (
               <button
                 key={tab.key}
