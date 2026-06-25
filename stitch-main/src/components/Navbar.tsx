@@ -13,6 +13,7 @@ export const Navbar: React.FC = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const servicesDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -28,6 +29,7 @@ export const Navbar: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
+    setIsDarkMode(document.documentElement.classList.contains("dark"));
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -49,6 +51,12 @@ export const Navbar: React.FC = () => {
   const handleLogout = async () => {
     await logout();
     setIsMobileMenuOpen(false);
+  };
+
+  const toggleDarkMode = () => {
+    const isDark = document.documentElement.classList.toggle("dark");
+    setIsDarkMode(isDark);
+    localStorage.setItem("theme", isDark ? "dark" : "light");
   };
 
   const navLinkClass = "hover:text-primary-container transition-colors duration-300";
@@ -133,6 +141,15 @@ export const Navbar: React.FC = () => {
               {t("nav_signup")}
             </Link>
           )}
+
+          <button
+            onClick={toggleDarkMode}
+            className="flex items-center justify-center hover:text-primary-container transition-colors cursor-pointer p-2"
+          >
+            <span className="material-symbols-outlined text-[18px]">
+              {isDarkMode ? "light_mode" : "dark_mode"}
+            </span>
+          </button>
 
           <button
             onClick={toggleLanguage}

@@ -177,3 +177,14 @@ html[lang="ar"] span:not(.material-symbols-outlined) {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Instant Dark Mode */
+html.dark {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+html.dark img, 
+html.dark video, 
+html.dark .no-invert {
+  filter: invert(1) hue-rotate(180deg);
+}
