@@ -188,8 +188,13 @@ export const Navbar: React.FC = () => {
               <Link href="/book" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_booking")}</Link>
               <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_contact")}</Link>
               <Link href="/cart" onClick={() => setIsMobileMenuOpen(false)}>{t("cart_title")} ({cartCount})</Link>
-              <button onClick={toggleLanguage} className="text-start hover:text-primary transition-colors">
+              <button onClick={toggleLanguage} className="text-start hover:text-primary transition-colors flex items-center gap-2">
+                <span className="material-symbols-outlined">language</span>
                 {language === "en" ? "العربية" : "ENGLISH"}
+              </button>
+              <button onClick={toggleDarkMode} className="text-start hover:text-primary transition-colors flex items-center gap-2">
+                <span className="material-symbols-outlined">{isDarkMode ? "light_mode" : "dark_mode"}</span>
+                {isDarkMode ? "LIGHT MODE" : "DARK MODE"}
               </button>
               {user ? (
                 <>
