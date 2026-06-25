@@ -74,7 +74,7 @@ export default function Home() {
           </div>
 
           {/* Right Card */}
-          <div className="glass-card rounded-[32px] p-4 max-w-sm w-full relative transform transition hover:-translate-y-2 duration-500 hidden sm:block">
+          <div className="glass-card rounded-[32px] p-4 max-w-sm w-full relative transform transition hover:-translate-y-2 duration-500 mt-8 md:mt-0">
             <div className="absolute top-8 right-8 rtl:left-8 rtl:right-auto z-20 bg-on-surface backdrop-blur-sm text-white text-[10px] px-3 py-1 rounded-full uppercase tracking-widest font-semibold font-label-sm">
               -15% OFF
             </div>
@@ -150,12 +150,12 @@ export default function Home() {
       {/* Services Categories */}
       <section className="max-w-[1440px] mx-auto px-6 md:px-10 mb-[160px]" id="services">
         {/* Horizontal scroll container for mobile, standard grid for desktop */}
-        <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory gap-4 scrollbar-hide md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:overflow-visible md:pb-0 md:snap-none">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           
           {/* Category - Body */}
           <Link
             href="/services/body"
-            className="min-w-[85vw] sm:min-w-[60vw] md:min-w-0 snap-center rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[400px] md:h-[500px] relative overflow-hidden shadow-lg flex-shrink-0"
+            className="rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[400px] md:h-[500px] relative overflow-hidden shadow-lg"
           >
             <img
               alt="Body Care"
@@ -173,7 +173,7 @@ export default function Home() {
           {/* Category - Face */}
           <Link
             href="/services/face"
-            className="min-w-[85vw] sm:min-w-[60vw] md:min-w-0 snap-center rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[400px] md:h-[500px] relative overflow-hidden shadow-lg flex-shrink-0"
+            className="rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[400px] md:h-[500px] relative overflow-hidden shadow-lg"
           >
             <img
               alt="Face Care"
@@ -191,7 +191,7 @@ export default function Home() {
           {/* Category - Hair */}
           <Link
             href="/services/hair"
-            className="min-w-[85vw] sm:min-w-[60vw] md:min-w-0 snap-center rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[400px] md:h-[500px] relative overflow-hidden shadow-lg flex-shrink-0"
+            className="rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[400px] md:h-[500px] relative overflow-hidden shadow-lg"
           >
             <img
               alt="Hair Care"
@@ -209,7 +209,7 @@ export default function Home() {
           {/* Category - Other / Specialty */}
           <Link
             href="/services/specialty"
-            className="min-w-[85vw] sm:min-w-[60vw] md:min-w-0 snap-center rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[400px] md:h-[500px] relative overflow-hidden shadow-lg flex-shrink-0"
+            className="rounded-[32px] hover:-translate-y-2 transition-transform duration-500 cursor-pointer group flex flex-col h-[400px] md:h-[500px] relative overflow-hidden shadow-lg"
           >
             <img
               alt="Other Specialty"
