@@ -122,11 +122,7 @@ export const Navbar: React.FC = () => {
             )}
           </Link>
 
-          {!user && (
-            <Link href="/signin" className="hidden md:block text-xs uppercase tracking-widest hover:text-primary-container">
-              {t("nav_signin")}
-            </Link>
-          )}
+          {/* Removed signin link as requested */}
 
           {!authLoading && user && (
             <div className="hidden md:flex items-center gap-3">
@@ -187,7 +183,6 @@ export const Navbar: React.FC = () => {
             </>
           ) : (
             <>
-              <Link href="/signin" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_signin")}</Link>
               <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_signup")}</Link>
             </>
           )}
