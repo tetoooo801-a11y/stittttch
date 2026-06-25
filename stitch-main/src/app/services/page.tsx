@@ -54,7 +54,7 @@ export default function ServicesPage() {
         </div>
         <div className="relative z-10 text-center max-w-3xl mx-auto px-4">
           <p className="font-label-sm text-xs uppercase tracking-[0.2em] text-primary mb-4">{t("hero_subtitle")}</p>
-          <h1 className="font-headline-lg text-4xl md:text-6xl text-on-surface mb-6">{t("nav_services")}</h1>
+          <h1 className="font-headline-lg text-4xl md:text-6xl text-on-surface mb-6 uppercase">{t("nav_services")}</h1>
           <p className="font-body-lg text-sm md:text-base text-on-surface-variant max-w-xl mx-auto">{t("hero_desc")}</p>
         </div>
       </section>
