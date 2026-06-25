@@ -13,12 +13,13 @@ function calcTotals(price: number, quantity: number, discountAmount = 0) {
   return { subtotal, depositAmount, total };
 }
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await params;
     const { data: booking, error } = await supabase
       .from("bookings")
       .select(BOOKING_SELECT)
-      .eq("id", params.id)
+      .eq("id", id)
       .maybeSingle();
 
     if (error) throw error;
@@ -33,12 +34,13 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
   }
 }
 
-export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await params;
     const { data: existing, error: getError } = await supabase
       .from("bookings")
       .select(BOOKING_SELECT)
-      .eq("id", params.id)
+      .eq("id", id)
       .maybeSingle();
 
     if (getError) throw getError;
@@ -85,7 +87,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     const { data: booking, error } = await supabase
       .from("bookings")
       .update(update)
-      .eq("id", params.id)
+      .eq("id", id)
       .select(BOOKING_SELECT)
       .single();
 

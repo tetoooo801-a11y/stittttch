@@ -3,9 +3,10 @@ import { supabase } from "@/lib/supabase";
 import { camelize } from "@/lib/camelize";
 import { resolveService } from "@/lib/resolveService";
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const service = await resolveService(params.id, "*");
+    const { id } = await params;
+    const service = await resolveService(id, "*");
 
     if (!service) {
       return NextResponse.json({ success: false, message: "Service not found" }, { status: 404 });
