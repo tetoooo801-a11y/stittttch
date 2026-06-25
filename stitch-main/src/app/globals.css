@@ -81,6 +81,10 @@ body {
   transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+html.dark body {
+  background-color: #060608;
+}
+
 /* Enforce Editorial Muse Typography Hierarchy */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-headline-md);
@@ -178,13 +182,13 @@ html[lang="ar"] span:not(.material-symbols-outlined) {
   scrollbar-width: none;
 }
 
-/* Instant Dark Mode */
-html.dark {
+/* Instant Dark Mode without breaking fixed positioning */
+html.dark .dark-invert {
   filter: invert(1) hue-rotate(180deg);
 }
 
-html.dark img, 
-html.dark video, 
-html.dark .no-invert {
+html.dark .dark-invert img, 
+html.dark .dark-invert video, 
+html.dark .dark-invert .no-invert {
   filter: invert(1) hue-rotate(180deg);
 }

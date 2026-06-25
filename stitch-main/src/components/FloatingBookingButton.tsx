@@ -10,7 +10,7 @@ export const FloatingBookingButton: React.FC = () => {
   return (
     <Link
       href="/book"
-      className={`fixed bottom-8 w-16 h-16 bg-rose-gold text-on-surface rounded-full flex justify-center items-center shadow-2xl hover:scale-110 active:scale-95 transition-transform z-50 group ${
+      className={`dark-invert fixed bottom-8 w-16 h-16 bg-rose-gold text-on-surface rounded-full flex justify-center items-center shadow-2xl hover:scale-110 active:scale-95 transition-transform z-50 group ${
         dir === "rtl" ? "left-8" : "right-8"
       }`}
     >

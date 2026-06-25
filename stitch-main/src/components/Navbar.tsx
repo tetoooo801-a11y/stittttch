@@ -63,9 +63,9 @@ export const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ease-in-out ${
+      className={`dark-invert fixed top-0 w-full z-50 transition-all duration-500 ease-in-out ${
         isScrolled
-          ? "bg-white/80 dark:bg-black/60 shadow-md py-4 backdrop-blur-xl"
+          ? "bg-white/80 shadow-md py-4 backdrop-blur-xl"
           : "bg-transparent py-6"
       }`}
     >
