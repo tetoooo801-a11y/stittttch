@@ -64,13 +64,13 @@ export const Navbar: React.FC = () => {
   return (
     <div className="fixed top-0 left-0 w-full z-50">
       {/* Mobile Announcement Bar */}
-      <div className="md:hidden bg-background border-b border-outline-variant/20 text-center py-2 flex items-center justify-between px-4 shadow-sm relative z-50">
-        <span className="material-symbols-outlined text-[16px] text-on-surface-variant opacity-50">chevron_left</span>
-        <span className="text-[9px] font-label-sm uppercase tracking-[0.2em] text-on-surface-variant font-semibold">Luxury Beauty & Aesthetic Experience</span>
-        <span className="material-symbols-outlined text-[16px] text-on-surface-variant opacity-50">chevron_right</span>
+      <div className="md:hidden bg-transparent text-center py-4 flex items-center justify-between px-6 relative z-50">
+        <span className="text-[10px] text-on-surface-variant/60">&lt;</span>
+        <span className="text-[8px] font-label-sm uppercase tracking-[0.25em] text-on-surface-variant/80 font-bold">Luxury Beauty & Aesthetic Experience</span>
+        <span className="text-[10px] text-on-surface-variant/60">&gt;</span>
       </div>
 
-      <div className="flex justify-center px-4 md:px-8 pt-2 md:pt-6 pointer-events-none w-full">
+      <div className="flex justify-center px-4 md:px-8 pt-0 md:pt-6 pointer-events-none w-full">
         <nav
           className={`dark-invert pointer-events-auto transition-all duration-500 ease-in-out w-full max-w-[1440px] rounded-full ${
             isScrolled

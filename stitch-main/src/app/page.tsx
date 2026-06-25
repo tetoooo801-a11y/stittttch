@@ -8,10 +8,10 @@ export default function Home() {
   const { t, language } = useLanguage();
 
   return (
-    <div className="pt-[110px] md:pt-[140px] pb-[120px] transition-content bg-background relative">
+    <div className="pt-0 md:pt-[140px] pb-[120px] transition-content bg-background relative">
       
       {/* Hero Section */}
-      <section className="relative w-full max-w-[1600px] mx-auto min-h-[85vh] md:min-h-[80vh] flex flex-col justify-center mb-[100px] md:mb-[160px] overflow-hidden">
+      <section className="relative w-full max-w-[1600px] mx-auto min-h-screen md:min-h-[80vh] flex flex-col justify-center mb-[100px] md:mb-[160px] overflow-hidden pt-24 md:pt-0">
         {/* Split Background (Desktop) / Full Background (Mobile) */}
         <div className="absolute inset-0 flex flex-col md:flex-row bg-surface">
           {/* Mobile Image BG */}
