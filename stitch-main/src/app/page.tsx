@@ -128,46 +128,46 @@ export default function Home() {
           <h2 className="font-headline-md text-4xl text-on-surface mb-4">OUR SERVICES</h2>
           <p className="font-body-md text-on-surface-variant text-sm">Bespoke care for every part of you.</p>
         </div>
-        <div className="flex flex-col gap-5 md:grid md:grid-cols-4 md:gap-6">
+        <div className="flex flex-col md:grid md:grid-cols-4 md:gap-6">
           {/* Face */}
-          <Link href="/services/face" className="relative w-full h-[240px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-md hover:-translate-y-1 transition-transform">
+          <Link href="/services/face" className="relative w-full h-[240px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-xl hover:-translate-y-1 transition-transform z-40">
             <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=600&q=80" alt="Face" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
             <div className="absolute bottom-6 left-6 flex items-center justify-between w-[calc(100%-48px)]">
-               <div className="bg-white/40 backdrop-blur-lg rounded-full px-8 py-3 border border-white/50">
+               <div className="bg-white/40 backdrop-blur-lg rounded-full px-8 py-3 border border-white/50 shadow-sm">
                  <span className="font-headline-md text-white text-2xl">Face</span>
                </div>
                <span className="material-symbols-outlined text-white text-2xl drop-shadow-md">arrow_forward</span>
             </div>
           </Link>
           {/* Hair */}
-          <Link href="/services/hair" className="relative w-full h-[240px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-md hover:-translate-y-1 transition-transform">
+          <Link href="/services/hair" className="relative w-full h-[240px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-xl hover:-translate-y-1 transition-transform -mt-14 md:mt-0 z-30">
             <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80" alt="Hair" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
             <div className="absolute bottom-6 left-6 flex items-center justify-between w-[calc(100%-48px)]">
-               <div className="bg-white/40 backdrop-blur-lg rounded-full px-8 py-3 border border-white/50">
+               <div className="bg-white/40 backdrop-blur-lg rounded-full px-8 py-3 border border-white/50 shadow-sm">
                  <span className="font-headline-md text-white text-2xl">Hair</span>
                </div>
                <span className="material-symbols-outlined text-white text-2xl drop-shadow-md">arrow_forward</span>
             </div>
           </Link>
           {/* Body */}
-          <Link href="/services/body" className="relative w-full h-[240px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-md hover:-translate-y-1 transition-transform">
+          <Link href="/services/body" className="relative w-full h-[240px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-xl hover:-translate-y-1 transition-transform -mt-14 md:mt-0 z-20">
             <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&q=80" alt="Body" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
             <div className="absolute bottom-6 left-6 flex items-center justify-between w-[calc(100%-48px)]">
-               <div className="bg-white/40 backdrop-blur-lg rounded-full px-8 py-3 border border-white/50">
+               <div className="bg-white/40 backdrop-blur-lg rounded-full px-8 py-3 border border-white/50 shadow-sm">
                  <span className="font-headline-md text-white text-2xl">Body</span>
                </div>
                <span className="material-symbols-outlined text-white text-2xl drop-shadow-md">arrow_forward</span>
             </div>
           </Link>
           {/* Other */}
-          <Link href="/services/specialty" className="relative w-full h-[240px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-md hover:-translate-y-1 transition-transform">
+          <Link href="/services/specialty" className="relative w-full h-[240px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-xl hover:-translate-y-1 transition-transform -mt-14 md:mt-0 z-10">
             <img src="https://images.unsplash.com/photo-1615397323214-3a216f446059?auto=format&fit=crop&w=600&q=80" alt="Other" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
             <div className="absolute bottom-6 left-6 flex items-center justify-between w-[calc(100%-48px)]">
-               <div className="bg-white/40 backdrop-blur-lg rounded-full px-8 py-3 border border-white/50">
+               <div className="bg-white/40 backdrop-blur-lg rounded-full px-8 py-3 border border-white/50 shadow-sm">
                  <span className="font-headline-md text-white text-2xl">Other</span>
                </div>
                <span className="material-symbols-outlined text-white text-2xl drop-shadow-md">arrow_forward</span>
