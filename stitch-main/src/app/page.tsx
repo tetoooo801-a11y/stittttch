@@ -37,12 +37,12 @@ export default function Home() {
         <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 md:px-10 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12 mt-4 md:mt-10">
           
           {/* Left Card (Mobile Glass Card) */}
-          <div className="glass-card bg-white/60 md:bg-white/70 backdrop-blur-3xl rounded-[40px] p-8 md:p-12 max-w-lg w-full transform transition hover:-translate-y-1 duration-500 flex flex-col items-center md:items-start text-center md:text-left rtl:md:text-right border border-white/50 shadow-2xl">
+          <div className="glass-card bg-white/60 md:bg-white/70 backdrop-blur-3xl rounded-[40px] py-16 px-8 md:p-12 max-w-lg w-full transform transition hover:-translate-y-1 duration-500 flex flex-col items-center md:items-start text-center md:text-left rtl:md:text-right border border-white/50 shadow-2xl">
             <h3 className="text-on-surface-variant font-label-sm uppercase tracking-[0.2em] font-bold mb-4 md:mb-6 text-[10px] md:text-xs">
               DISCOVER YOUR BEST SELF
             </h3>
             <h1 className="font-headline-md text-4xl md:text-5xl text-on-surface leading-tight mb-4 md:mb-6">
-              Your Beauty, <br className="hidden md:block" />
+              Your Beauty, <br />
               <span className="italic font-light">
                 Our Passion
               </span>
@@ -130,7 +130,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col md:grid md:grid-cols-4 md:gap-6">
           {/* Face */}
-          <Link href="/services/face" className="relative w-full h-[240px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-xl hover:-translate-y-1 transition-transform z-40">
+          <Link href="/services/face" className="relative w-full h-[400px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-xl hover:-translate-y-1 transition-transform z-40">
             <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=600&q=80" alt="Face" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
             <div className="absolute bottom-6 left-6 flex items-center justify-between w-[calc(100%-48px)]">
@@ -141,7 +141,7 @@ export default function Home() {
             </div>
           </Link>
           {/* Hair */}
-          <Link href="/services/hair" className="relative w-full h-[240px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-xl hover:-translate-y-1 transition-transform -mt-14 md:mt-0 z-30">
+          <Link href="/services/hair" className="relative w-full h-[400px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-xl hover:-translate-y-1 transition-transform -mt-24 md:mt-0 z-30">
             <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80" alt="Hair" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
             <div className="absolute bottom-6 left-6 flex items-center justify-between w-[calc(100%-48px)]">
@@ -152,7 +152,7 @@ export default function Home() {
             </div>
           </Link>
           {/* Body */}
-          <Link href="/services/body" className="relative w-full h-[240px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-xl hover:-translate-y-1 transition-transform -mt-14 md:mt-0 z-20">
+          <Link href="/services/body" className="relative w-full h-[400px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-xl hover:-translate-y-1 transition-transform -mt-24 md:mt-0 z-20">
             <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&q=80" alt="Body" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
             <div className="absolute bottom-6 left-6 flex items-center justify-between w-[calc(100%-48px)]">
@@ -163,7 +163,7 @@ export default function Home() {
             </div>
           </Link>
           {/* Other */}
-          <Link href="/services/specialty" className="relative w-full h-[240px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-xl hover:-translate-y-1 transition-transform -mt-14 md:mt-0 z-10">
+          <Link href="/services/specialty" className="relative w-full h-[400px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-xl hover:-translate-y-1 transition-transform -mt-24 md:mt-0 z-10">
             <img src="https://images.unsplash.com/photo-1615397323214-3a216f446059?auto=format&fit=crop&w=600&q=80" alt="Other" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
             <div className="absolute bottom-6 left-6 flex items-center justify-between w-[calc(100%-48px)]">
