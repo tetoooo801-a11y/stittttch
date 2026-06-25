@@ -9,8 +9,8 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
     await supabase.from("cart_items").update({ quantity }).eq("id", id);
     
     const { data: item } = await supabase.from("cart_items").select("cart_id").eq("id", id).single();
-    const { data: cart } = await supabase.from("carts").select("id, user_id").eq("id", item.cart_id).single();
-    const { data: items } = await supabase.from("cart_items").select("id, quantity, service:services(*)").eq("cart_id", cart.id);
+    const { data: cart } = await supabase.from("carts").select("id, user_id").eq("id", item!.cart_id).single();
+    const { data: items } = await supabase.from("cart_items").select("id, quantity, service:services(*)").eq("cart_id", cart!.id);
     
     return NextResponse.json({ success: true, data: { cart: camelize({ ...cart, items: items || [] }) } });
   } catch (error: any) {
@@ -24,8 +24,8 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ i
     const { data: item } = await supabase.from("cart_items").select("cart_id").eq("id", id).single();
     await supabase.from("cart_items").delete().eq("id", id);
     
-    const { data: cart } = await supabase.from("carts").select("id, user_id").eq("id", item.cart_id).single();
-    const { data: items } = await supabase.from("cart_items").select("id, quantity, service:services(*)").eq("cart_id", cart.id);
+    const { data: cart } = await supabase.from("carts").select("id, user_id").eq("id", item!.cart_id).single();
+    const { data: items } = await supabase.from("cart_items").select("id, quantity, service:services(*)").eq("cart_id", cart!.id);
     
     return NextResponse.json({ success: true, data: { cart: camelize({ ...cart, items: items || [] }) } });
   } catch (error: any) {

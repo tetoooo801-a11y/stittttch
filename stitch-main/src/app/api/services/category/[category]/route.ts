@@ -23,7 +23,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ cate
     return NextResponse.json({
       success: true,
       data: {
-        category: params.category,
+        category: category,
         bannerUrl,
         services: camelize(services)
       }

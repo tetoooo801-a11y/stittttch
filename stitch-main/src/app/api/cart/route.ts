@@ -36,7 +36,7 @@ export async function GET(req: NextRequest) {
     const { data: items } = await supabase
       .from("cart_items")
       .select("id, quantity, service:services(*)")
-      .eq("cart_id", cart.id);
+      .eq("cart_id", cart!.id);
 
     return NextResponse.json({ success: true, data: { cart: camelize({ ...cart, items: items || [] }) } });
   } catch (error: any) {
@@ -62,20 +62,20 @@ export async function POST(req: NextRequest) {
     const { data: existingItem } = await supabase
       .from("cart_items")
       .select("id, quantity")
-      .eq("cart_id", cart.id)
+      .eq("cart_id", cart!.id)
       .eq("service_id", service.id)
       .maybeSingle();
 
     if (existingItem) {
       await supabase.from("cart_items").update({ quantity: existingItem.quantity + quantity }).eq("id", existingItem.id);
     } else {
-      await supabase.from("cart_items").insert({ cart_id: cart.id, service_id: service.id, quantity });
+      await supabase.from("cart_items").insert({ cart_id: cart!.id, service_id: service.id, quantity });
     }
 
     const { data: items } = await supabase
       .from("cart_items")
       .select("id, quantity, service:services(*)")
-      .eq("cart_id", cart.id);
+      .eq("cart_id", cart!.id);
 
     return NextResponse.json({ success: true, data: { cart: camelize({ ...cart, items: items || [] }) } }, { status: 201 });
   } catch (error: any) {
