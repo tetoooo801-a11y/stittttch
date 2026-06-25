@@ -59,7 +59,7 @@ export default function CategoryPage() {
   }
 
   return (
-    <div className="pt-[100px] md:pt-[120px] pb-24 bg-[#FAF9F6]">
+    <div className="pt-[100px] md:pt-[120px] pb-24 bg-background">
       {isHair ? (
         <section className="max-w-[1440px] mx-auto px-6 md:px-12 py-8 md:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-5 flex flex-col justify-center text-start">
@@ -74,13 +74,13 @@ export default function CategoryPage() {
             </button>
           </div>
           <div className="lg:col-span-7">
-            <div className="relative aspect-[16/10] w-full rounded-[24px] overflow-hidden shadow-xl">
+            <div className="relative aspect-[16/10] w-full rounded-[32px] overflow-hidden shadow-xl">
               <img alt={t(titleKey)} className="w-full h-full object-cover" src={bannerUrl || services[0]?.imageUrl} />
             </div>
           </div>
         </section>
       ) : (
-        <section className="relative min-h-[350px] md:min-h-[450px] flex items-center justify-center px-6 overflow-hidden mb-16 rounded-b-[40px]">
+        <section className="relative min-h-[350px] md:min-h-[450px] flex items-center justify-center px-6 overflow-hidden mb-16 rounded-b-[32px]">
           <div className="absolute inset-0 z-0">
             <img alt={t(titleKey)} className="w-full h-full object-cover opacity-70" src={bannerUrl || services[0]?.imageUrl} />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/90" />
@@ -141,9 +141,9 @@ export default function CategoryPage() {
       </section>
 
       {isHair && (
-        <section className="bg-[#F2ECE4] py-20 px-6 mt-24 text-center">
-          <h3 className="font-serif text-2xl md:text-4xl text-[#3A332E] italic mb-6">&ldquo;{t("hair_quote")}&rdquo;</h3>
-          <p className="font-label-sm text-xs uppercase tracking-[0.3em] text-[#70655B]">{t("hair_quote_author")}</p>
+        <section className="bg-surface-container py-20 px-6 mt-24 text-center rounded-2xl max-w-[1440px] mx-auto">
+          <h3 className="font-serif text-2xl md:text-4xl text-on-surface italic mb-6">&ldquo;{t("hair_quote")}&rdquo;</h3>
+          <p className="font-label-sm text-xs uppercase tracking-[0.3em] text-on-surface-variant">{t("hair_quote_author")}</p>
         </section>
       )}
     </div>

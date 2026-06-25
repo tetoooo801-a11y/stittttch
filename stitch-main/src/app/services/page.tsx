@@ -103,9 +103,9 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-16">
             {services.map((product) => (
               <div key={product._id} className="group flex flex-col">
-                <div className="relative bg-surface-container-low rounded-xl aspect-[3/4] mb-6 overflow-hidden img-zoom-container cursor-pointer">
+                <div className="relative bg-surface-container-low rounded-2xl aspect-[3/4] mb-6 overflow-hidden img-zoom-container cursor-pointer border border-rose-gold/20">
                   {product.badgeKey && (
-                    <div className="absolute top-4 left-4 z-10 bg-primary text-white font-label-sm text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
+                    <div className="absolute top-4 left-4 z-10 bg-tertiary-container text-on-surface font-label-sm text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
                       {product.badgeKey}
                     </div>
                   )}
@@ -119,17 +119,17 @@ export default function ServicesPage() {
                   <div className="absolute bottom-0 left-0 w-full p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out flex gap-2">
                     <Link
                       href={`/book?serviceId=${product._id}`}
-                      className="flex-1 bg-on-surface text-white font-label-sm text-center text-xs uppercase tracking-widest py-3 rounded-lg hover:bg-primary transition-colors"
+                      className="flex-1 bg-on-surface text-white font-label-sm text-center text-xs uppercase tracking-widest py-3 rounded-full hover:bg-primary transition-colors"
                     >
                       {t("book_now")}
                     </Link>
                     <button
                       onClick={() => handleAddToCart(product._id)}
                       disabled={addingId === product._id || addedId === product._id}
-                      className={`flex-1 font-label-sm text-xs uppercase py-3 rounded-lg transition-colors cursor-pointer ${
+                      className={`flex-1 font-label-sm text-xs uppercase py-3 rounded-full transition-colors cursor-pointer ${
                         addedId === product._id 
                           ? "bg-green-700 text-white disabled:opacity-100" 
-                          : "bg-primary text-white hover:bg-on-surface disabled:opacity-60"
+                          : "bg-surface/80 backdrop-blur-md border border-rose-gold text-on-surface hover:bg-rose-gold disabled:opacity-60"
                       }`}
                     >
                       {addingId === product._id ? "..." : addedId === product._id ? `✓ ${language === "ar" ? "تم" : "Added"}` : t("add_to_cart")}

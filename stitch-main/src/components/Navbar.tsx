@@ -59,7 +59,7 @@ export const Navbar: React.FC = () => {
     localStorage.setItem("theme", isDark ? "dark" : "light");
   };
 
-  const navLinkClass = "hover:text-primary-container transition-colors duration-300";
+  const navLinkClass = "text-on-surface-variant hover:text-primary transition-all duration-300 hover:underline decoration-rose-gold decoration-2 underline-offset-[6px]";
 
   return (
     <nav
@@ -79,7 +79,7 @@ export const Navbar: React.FC = () => {
 
         <div className="hidden md:flex items-center gap-8 font-body-md text-sm uppercase tracking-widest text-primary">
           <Link href="/" className={navLinkClass}>{t("nav_home")}</Link>
-          <Link href="/about" className="text-on-surface-variant hover:text-primary transition-colors duration-300">
+          <Link href="/about" className={navLinkClass}>
             {t("nav_about")}
           </Link>
 
@@ -89,7 +89,7 @@ export const Navbar: React.FC = () => {
           >
             <button 
               onClick={() => setIsServicesOpen(!isServicesOpen)}
-              className="text-on-surface-variant hover:text-primary transition-colors duration-300 flex items-center gap-1 cursor-pointer"
+              className={`${navLinkClass} flex items-center gap-1 cursor-pointer`}
             >
               {t("nav_services")}
             </button>
@@ -104,8 +104,8 @@ export const Navbar: React.FC = () => {
             )}
           </div>
 
-          <Link href="/book" className="text-on-surface-variant hover:text-primary transition-colors duration-300">{t("nav_booking")}</Link>
-          <Link href="/contact" className="text-on-surface-variant hover:text-primary transition-colors duration-300">{t("nav_contact")}</Link>
+          <Link href="/book" className={navLinkClass}>{t("nav_booking")}</Link>
+          <Link href="/contact" className={navLinkClass}>{t("nav_contact")}</Link>
         </div>
 
         <div className="flex items-center gap-4 text-primary">

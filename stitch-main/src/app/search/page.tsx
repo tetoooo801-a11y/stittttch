@@ -59,7 +59,7 @@ export default function SearchPage() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={language === "ar" ? "ابحث عن خدمة، علاج، أو منتج..." : "Search for a service, treatment, or product..."}
-              className="w-full bg-surface-container-low text-on-surface font-body-lg text-lg py-6 rounded-full border border-outline-variant/30 focus:border-primary focus:outline-none transition-colors shadow-sm"
+              className="w-full bg-transparent text-on-surface font-body-lg text-lg py-6 border-b border-rose-gold focus:border-primary focus:outline-none transition-colors"
               style={{ paddingLeft: language === "ar" ? "24px" : "64px", paddingRight: language === "ar" ? "64px" : "24px" }}
             />
           </div>
@@ -81,7 +81,7 @@ export default function SearchPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-16">
             {filteredServices.map((product) => (
               <div key={product._id} className="group flex flex-col">
-                <div className="relative bg-surface-container-low rounded-xl aspect-[3/4] mb-6 overflow-hidden img-zoom-container cursor-pointer">
+                <div className="relative bg-surface-container-low rounded-2xl aspect-[3/4] mb-6 overflow-hidden img-zoom-container cursor-pointer">
                   {product.badgeKey && (
                     <div className="absolute top-4 left-4 z-10 bg-primary text-white font-label-sm text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
                       {product.badgeKey}
@@ -97,14 +97,14 @@ export default function SearchPage() {
                   <div className="absolute bottom-0 left-0 w-full p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out flex gap-2">
                     <Link
                       href={`/book?serviceId=${product._id}`}
-                      className="flex-1 bg-on-surface text-white font-label-sm text-center text-xs uppercase tracking-widest py-3 rounded-lg hover:bg-primary transition-colors"
+                      className="flex-1 bg-on-surface text-white font-label-sm text-center text-xs uppercase tracking-widest py-3 rounded-full hover:bg-primary transition-colors"
                     >
                       {t("book_now")}
                     </Link>
                     <button
                       onClick={() => handleAddToCart(product._id)}
                       disabled={addingId === product._id || addedId === product._id}
-                      className={`flex-1 font-label-sm text-xs uppercase py-3 rounded-lg transition-colors cursor-pointer ${
+                      className={`flex-1 font-label-sm text-xs uppercase py-3 rounded-full transition-colors cursor-pointer ${
                         addedId === product._id 
                           ? "bg-green-700 text-white disabled:opacity-100" 
                           : "bg-primary text-white hover:bg-on-surface disabled:opacity-60"
