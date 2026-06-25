@@ -62,14 +62,15 @@ export const Navbar: React.FC = () => {
   const navLinkClass = "text-on-surface-variant hover:text-primary transition-all duration-300 hover:underline decoration-rose-gold decoration-2 underline-offset-[6px]";
 
   return (
-    <nav
-      className={`dark-invert fixed top-0 w-full z-50 transition-all duration-500 ease-in-out ${
-        isScrolled
-          ? "bg-white/80 shadow-md py-4 backdrop-blur-xl"
-          : "bg-transparent py-6"
-      }`}
-    >
-      <div className="flex justify-between items-center px-6 md:px-10 max-w-[1440px] mx-auto">
+    <div className="fixed top-2 md:top-6 left-0 w-full z-50 flex justify-center px-4 md:px-8 pointer-events-none">
+      <nav
+        className={`dark-invert pointer-events-auto transition-all duration-500 ease-in-out w-full max-w-[1440px] rounded-full ${
+          isScrolled
+            ? "bg-surface-container-lowest/80 shadow-lg py-3 px-6 md:px-8 backdrop-blur-xl border border-outline-variant/30"
+            : "bg-transparent py-4 px-2 md:px-4"
+        }`}
+      >
+        <div className="flex justify-between items-center w-full">
         <Link
           href="/"
           className="font-headline-md text-3xl font-semibold text-on-surface hover:opacity-80 transition-opacity"
@@ -188,6 +189,7 @@ export const Navbar: React.FC = () => {
           )}
         </div>
       )}
-    </nav>
+      </nav>
+    </div>
   );
 };
