@@ -346,11 +346,60 @@ export const api = {
         };
       }
     },
-    allAdmin: (status?: string) => {
+    allAdmin: async (status?: string) => {
       const qs = status ? `?status=${status}` : "";
-      return request<{ success: boolean; data: { bookings: Booking[] } }>(
-        `/api/bookings/admin/all${qs}`
-      );
+      try {
+        return await request<{ success: boolean; data: { bookings: Booking[] } }>(
+          `/api/bookings/admin/all${qs}`
+        );
+      } catch (e) {
+        let stored: any = null;
+        if (typeof window !== "undefined") {
+          stored = JSON.parse(localStorage.getItem("demo_booking") || "null");
+        }
+        if (!stored) {
+          return { success: true, data: { bookings: [] } };
+        }
+        const service = mockServices.find(s => s._id === stored.serviceId) || mockServices[0];
+        const qty = Number(stored.quantity) || 1;
+        const discountAmount = stored.discountAmount || 0;
+        const subtotal = service.price * qty;
+        const depositAmount = subtotal * 0.5;
+        const total = Math.max(0, depositAmount - discountAmount);
+
+        const bookingObj: Booking = {
+          _id: "demo_booking_123",
+          reference: "REF-DEMO-123",
+          service,
+          customerName: stored.name || "Guest User",
+          customerEmail: stored.email || "guest@example.com",
+          customerPhone: stored.phone || "",
+          date: stored.date || "2024-01-01",
+          time: stored.time || "10:00 AM",
+          notes: stored.notes || "",
+          healthNotes: stored.healthNotes || "",
+          quantity: qty,
+          discountCode: stored.discountCode || "",
+          discountAmount,
+          subtotal,
+          depositAmount,
+          total,
+          paymentMethod: stored.paymentMethod || "card",
+          status: stored.status || "pending",
+          specialist: "Sarah W."
+        };
+
+        if (status && bookingObj.status !== status) {
+          return { success: true, data: { bookings: [] } };
+        }
+
+        return {
+          success: true,
+          data: {
+            bookings: [bookingObj]
+          }
+        };
+      }
     },
     reject: async (id: string, reason?: string) => {
       try {
