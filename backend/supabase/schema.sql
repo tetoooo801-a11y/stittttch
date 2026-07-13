@@ -92,7 +92,7 @@ create table if not exists bookings (
   deposit_amount numeric not null,
   total numeric not null,
   payment_method text default 'card' check (payment_method in ('card','applepay','googlepay')),
-  status text default 'draft' check (status in ('draft','pending_deposit','confirmed','cancelled')),
+  status text default 'pending' check (status in ('draft','pending','confirmed','cancelled')),
   specialist text default 'Stitch Team',
   created_at timestamptz default now(),
   updated_at timestamptz default now()
