@@ -348,18 +348,22 @@ export const api = {
     },
     allAdmin: async (status?: string) => {
       const qs = status ? `?status=${status}` : "";
+      let dbBookings: Booking[] = [];
       try {
-        return await request<{ success: boolean; data: { bookings: Booking[] } }>(
+        const res = await request<{ success: boolean; data: { bookings: Booking[] } }>(
           `/api/bookings/admin/all${qs}`
         );
+        dbBookings = res.data?.bookings || [];
       } catch (e) {
-        let stored: any = null;
-        if (typeof window !== "undefined") {
-          stored = JSON.parse(localStorage.getItem("demo_booking") || "null");
-        }
-        if (!stored) {
-          return { success: true, data: { bookings: [] } };
-        }
+        console.warn("Failed to fetch admin bookings, falling back to mock");
+      }
+
+      let stored: any = null;
+      if (typeof window !== "undefined") {
+        stored = JSON.parse(localStorage.getItem("demo_booking") || "null");
+      }
+      
+      if (stored) {
         const service = mockServices.find(s => s._id === stored.serviceId) || mockServices[0];
         const qty = Number(stored.quantity) || 1;
         const discountAmount = stored.discountAmount || 0;
@@ -389,17 +393,15 @@ export const api = {
           specialist: "Sarah W."
         };
 
-        if (status && bookingObj.status !== status) {
-          return { success: true, data: { bookings: [] } };
+        if (!status || bookingObj.status === status) {
+          dbBookings.push(bookingObj);
         }
-
-        return {
-          success: true,
-          data: {
-            bookings: [bookingObj]
-          }
-        };
       }
+
+      return {
+        success: true,
+        data: { bookings: dbBookings }
+      };
     },
     reject: async (id: string, reason?: string) => {
       try {
