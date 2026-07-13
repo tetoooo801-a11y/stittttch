@@ -158,6 +158,10 @@ const translations: Record<Language, Record<string, string>> = {
     // Confirmation
     confirm_title: "Appointment Confirmed.",
     confirm_desc: "Thank you for choosing Stitch. Your appointment has been successfully scheduled.",
+    pending_title: "Booking Request Received.",
+    pending_desc: "Thank you for choosing Stitch. Your request is pending confirmation.",
+    cancelled_title: "Appointment Cancelled.",
+    cancelled_desc: "This appointment has been cancelled.",
     confirm_ref: "Booking Reference",
     confirm_status: "Status",
     confirm_specialist: "Specialist",
@@ -422,6 +426,10 @@ const translations: Record<Language, Record<string, string>> = {
     // Confirmation
     confirm_title: "تم تأكيد الموعد.",
     confirm_desc: "شكراً لاختيارك ستيتش. تم جدولة موعدك بنجاح.",
+    pending_title: "تم استلام طلب الحجز.",
+    pending_desc: "شكراً لاختيارك ستيتش. طلبك الآن في انتظار التأكيد.",
+    cancelled_title: "تم إلغاء الموعد.",
+    cancelled_desc: "لقد تم إلغاء هذا الموعد.",
     confirm_ref: "رقم الحجز",
     confirm_status: "الحالة",
     confirm_specialist: "المتخصص",

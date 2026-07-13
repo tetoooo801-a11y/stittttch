@@ -40,8 +40,12 @@ function ConfirmedContent() {
           </div>
         </div>
 
-        <h1 className="font-headline-lg text-3xl md:text-5xl text-on-surface mb-4">{t("confirm_title")}</h1>
-        <p className="font-body-md text-sm text-on-surface-variant max-w-md mb-8">{t("confirm_desc")}</p>
+        <h1 className="font-headline-lg text-3xl md:text-5xl text-on-surface mb-4">
+          {booking.status === "confirmed" ? t("confirm_title") : booking.status === "cancelled" ? t("cancelled_title") : t("pending_title")}
+        </h1>
+        <p className="font-body-md text-sm text-on-surface-variant max-w-md mb-8">
+          {booking.status === "confirmed" ? t("confirm_desc") : booking.status === "cancelled" ? t("cancelled_desc") : t("pending_desc")}
+        </p>
 
         <div className="w-full max-w-md glass-card rounded-xl p-8 mb-12 shadow-lg bg-white/60 border border-outline-variant/30 text-start rtl:text-right">
           <div className="flex justify-between items-center mb-6 pb-6 border-b border-outline-variant/30">
