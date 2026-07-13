@@ -50,6 +50,7 @@ export async function POST(req: Request) {
       delete dbData.content;
     }
     delete dbData.id;
+    delete dbData.title;
     const { data, error } = await supabase.from("editorials").insert(dbData).select("*").single();
     if (error) throw error;
     return NextResponse.json({ success: true, data: { post: camelize(data) } }, { status: 201 });

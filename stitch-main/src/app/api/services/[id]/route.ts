@@ -45,6 +45,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
     const body = await req.json();
     const dbData = decamelize(body);
     delete dbData.id;
+    delete dbData.name;
     const { data, error } = await supabase.from("services").update(dbData).eq("id", id).select("*").single();
     if (error) throw error;
     return NextResponse.json({ success: true, data: { service: camelize(data) } });

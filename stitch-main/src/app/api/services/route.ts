@@ -67,6 +67,7 @@ export async function POST(req: NextRequest) {
       ...parsed
     };
     delete dbData.id;
+    delete dbData.name;
     const { data, error } = await supabase.from("services").insert(dbData).select("*").single();
     if (error) throw error;
     return NextResponse.json({ success: true, data: { service: camelize(data) } }, { status: 201 });
