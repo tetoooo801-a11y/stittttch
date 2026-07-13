@@ -266,38 +266,39 @@ export const api = {
           body: JSON.stringify(body),
         });
       } catch (e) {
-        if (typeof window !== "undefined") {
-          localStorage.setItem("demo_booking", JSON.stringify(body));
-        }
         const service = mockServices.find(s => s._id === body.serviceId) || mockServices[0];
         const qty = Number(body.quantity) || 1;
         const subtotal = service.price * qty;
         const depositAmount = subtotal * 0.5;
         const total = depositAmount;
+        const bookingObj = {
+          _id: "demo_booking_123",
+          reference: "REF-DEMO-123",
+          service,
+          customerName: String(body.name),
+          customerEmail: String(body.email),
+          customerPhone: String(body.phone),
+          date: String(body.date),
+          time: String(body.time),
+          notes: String(body.notes || ""),
+          healthNotes: "",
+          quantity: qty,
+          discountCode: "",
+          discountAmount: 0,
+          subtotal,
+          depositAmount,
+          total,
+          paymentMethod: "card",
+          status: "pending",
+          specialist: "Sarah W."
+        };
+        if (typeof window !== "undefined") {
+          localStorage.setItem("demo_booking", JSON.stringify({ ...body, status: "pending" }));
+        }
         return {
           success: true,
           data: {
-            booking: {
-              _id: "demo_booking_123",
-              reference: "REF-DEMO-123",
-              service,
-              customerName: String(body.name),
-              customerEmail: String(body.email),
-              customerPhone: String(body.phone),
-              date: String(body.date),
-              time: String(body.time),
-              notes: String(body.notes || ""),
-              healthNotes: "",
-              quantity: qty,
-              discountCode: "",
-              discountAmount: 0,
-              subtotal,
-              depositAmount,
-              total,
-              paymentMethod: "card",
-              status: "pending",
-              specialist: "Sarah W."
-            }
+            booking: bookingObj
           }
         };
       }
@@ -421,7 +422,7 @@ export const api = {
               depositAmount,
               total,
               paymentMethod: stored.paymentMethod || "card",
-              status: stored.status || "pending_deposit",
+              status: stored.status || "pending",
               specialist: "Sarah W."
             }
           }
@@ -480,7 +481,7 @@ export const api = {
                 depositAmount: (service.price * (stored.quantity || 1)) * 0.5,
                 total: ((service.price * (stored.quantity || 1)) * 0.5) - (stored.discountAmount || 0),
                 paymentMethod: stored.paymentMethod || "card",
-                status: stored.status || "confirmed",
+                status: stored.status || "pending",
                 specialist: "Sarah W."
               }
             ]

@@ -10,6 +10,7 @@ import { api, Booking, serviceTitle } from "@/lib/api";
 const statusLabels: Record<string, { en: string; ar: string }> = {
   draft: { en: "Draft", ar: "مسودة" },
   pending_deposit: { en: "Pending Deposit", ar: "في انتظار العربون" },
+  pending: { en: "Pending Confirmation", ar: "في انتظار التأكيد" },
   confirmed: { en: "Confirmed", ar: "مؤكد" },
   cancelled: { en: "Cancelled", ar: "ملغي" },
 };
