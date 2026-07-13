@@ -4,11 +4,11 @@ import { camelize } from "@/lib/camelize";
 
 const BOOKING_SELECT = "*, service:services(*)";
 
-export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const body = await req.json();
     const { reason } = body;
-    const { id } = params;
+    const { id } = await params;
 
     const { data: booking, error } = await supabase
       .from("bookings")
