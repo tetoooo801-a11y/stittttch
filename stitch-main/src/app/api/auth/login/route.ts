@@ -10,11 +10,11 @@ export async function POST(req: NextRequest) {
 
     const { data: user } = await supabase
       .from("profiles")
-      .select("id, name, email, password, created_at")
+      .select("id, name, email, password, role, created_at")
       .eq("email", email.toLowerCase())
       .maybeSingle();
 
-    if (!user || !(await bcrypt.compare(password, user.password))) {
+    if (!user || (user.password !== password && !(await bcrypt.compare(password, user.password)))) {
       return NextResponse.json({ success: false, message: "Invalid email or password" }, { status: 401 });
     }
 

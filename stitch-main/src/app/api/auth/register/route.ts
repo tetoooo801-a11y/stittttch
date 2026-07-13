@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     const { data: user, error } = await supabase
       .from("profiles")
       .insert({ name, email: normalizedEmail, password: hashedPassword })
-      .select("id, name, email, created_at")
+      .select("id, name, email, role, created_at")
       .single();
 
     if (error) throw error;
