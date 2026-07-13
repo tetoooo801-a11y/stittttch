@@ -57,7 +57,7 @@ function DepositContent() {
         healthNotes,
         paymentMethod,
       });
-      await api.bookings.confirm(bookingId);
+
       router.push(`/book/confirmed?id=${bookingId}`);
     } catch (err) {
       setError(err instanceof ApiError ? err.message : t("error_loading"));
