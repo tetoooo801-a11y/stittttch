@@ -163,6 +163,14 @@ export default function AdminContentPage() {
                   }
                   className="w-full px-3 py-2 rounded-lg bg-neutral-800 text-white border border-neutral-700"
                 />
+                <textarea
+                  placeholder="الوصف (Description)"
+                  value={editingService.descEn || ""}
+                  onChange={(e) =>
+                    setEditingService({ ...editingService, descEn: e.target.value })
+                  }
+                  className="w-full px-3 py-2 rounded-lg bg-neutral-800 text-white border border-neutral-700 min-h-[80px]"
+                />
                 <input
                   placeholder="الفئة (face/hair/body)"
                   value={editingService.category || ""}
