@@ -8,6 +8,38 @@ export default function AdminContentPage() {
   const [posts, setPosts] = useState<EditorialPost[]>([]);
   const [editingService, setEditingService] = useState<Partial<Service> | null>(null);
   const [editingPost, setEditingPost] = useState<Partial<EditorialPost> | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, isPost: boolean) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploading(true);
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      
+      if (data.success) {
+        if (isPost) {
+          setEditingPost((prev: any) => ({ ...prev, imageUrl: data.url }));
+        } else {
+          setEditingService((prev: any) => ({ ...prev, imageUrl: data.url }));
+        }
+      } else {
+        alert("فشل رفع الصورة: " + data.message);
+      }
+    } catch (err) {
+      alert("حدث خطأ أثناء الرفع");
+    } finally {
+      setIsUploading(false);
+    }
+  };
 
   const loadServices = async () => {
     const res = await api.services.list();
@@ -146,12 +178,21 @@ export default function AdminContentPage() {
                   }
                   className="w-full px-3 py-2 rounded-lg bg-neutral-800 text-white border border-neutral-700"
                 />
-                <input
-                  placeholder="رابط الصورة (Image URL)"
-                  value={editingService.imageUrl || ""}
-                  onChange={(e) => setEditingService({ ...editingService, imageUrl: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg bg-neutral-800 text-white border border-neutral-700"
-                />
+                <div className="w-full flex items-center gap-3">
+                  <label className="flex-1 px-3 py-2 rounded-lg bg-neutral-800 text-neutral-400 border border-neutral-700 cursor-pointer hover:bg-neutral-700 transition flex items-center justify-center gap-2">
+                    <span className="text-xl">+</span> {isUploading ? "جاري الرفع..." : "اختر صورة"}
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) => handleImageUpload(e, false)}
+                      disabled={isUploading}
+                    />
+                  </label>
+                  {editingService.imageUrl && (
+                    <img src={editingService.imageUrl} alt="preview" className="w-10 h-10 object-cover rounded border border-neutral-700" />
+                  )}
+                </div>
                 <input
                   placeholder="slug (مثال: face-serum)"
                   value={editingService.slug || ""}
@@ -226,12 +267,21 @@ export default function AdminContentPage() {
                   }
                   className="w-full px-3 py-2 rounded-lg bg-neutral-800 text-white border border-neutral-700"
                 />
-                <input
-                  placeholder="رابط الصورة (Image URL)"
-                  value={(editingPost as any).imageUrl || ""}
-                  onChange={(e) => setEditingPost({ ...editingPost, imageUrl: e.target.value } as any)}
-                  className="w-full px-3 py-2 rounded-lg bg-neutral-800 text-white border border-neutral-700"
-                />
+                <div className="w-full flex items-center gap-3">
+                  <label className="flex-1 px-3 py-2 rounded-lg bg-neutral-800 text-neutral-400 border border-neutral-700 cursor-pointer hover:bg-neutral-700 transition flex items-center justify-center gap-2">
+                    <span className="text-xl">+</span> {isUploading ? "جاري الرفع..." : "اختر صورة"}
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) => handleImageUpload(e, true)}
+                      disabled={isUploading}
+                    />
+                  </label>
+                  {(editingPost as any).imageUrl && (
+                    <img src={(editingPost as any).imageUrl} alt="preview" className="w-10 h-10 object-cover rounded border border-neutral-700" />
+                  )}
+                </div>
                 <input
                   placeholder="slug"
                   value={editingPost.slug || ""}
