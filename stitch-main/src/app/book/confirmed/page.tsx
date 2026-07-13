@@ -51,11 +51,22 @@ function ConfirmedContent() {
             </div>
             <div className="text-end rtl:text-left">
               <p className="font-label-sm text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">{t("confirm_status")}</p>
-              <span className="inline-flex items-center bg-secondary-container px-3 py-1 rounded-full text-[10px] font-bold capitalize">
-                {booking.status}
+              <span className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold capitalize ${
+                booking.status === "rejected" ? "bg-red-900 text-red-300" :
+                booking.status === "pending_deposit" ? "bg-yellow-900 text-yellow-300" :
+                "bg-green-900 text-green-300"
+              }`}>
+                {booking.status === "pending_deposit" ? "Pending" : booking.status === "rejected" ? "Cancelled" : booking.status}
               </span>
             </div>
           </div>
+
+          {booking.status === "rejected" && (booking as any).rejectionReason && (
+            <div className="mb-6 pb-6 border-b border-outline-variant/30 text-red-400">
+              <p className="font-label-sm text-[10px] uppercase tracking-widest mb-1 text-red-300">Reason for Cancellation</p>
+              <p className="font-body-md text-sm">{(booking as any).rejectionReason}</p>
+            </div>
+          )}
 
           <div className="mb-6 pb-6 border-b border-outline-variant/30">
             <p className="font-label-sm text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">{t("confirm_specialist")}</p>

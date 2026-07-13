@@ -431,6 +431,25 @@ export const api = {
         };
       }
     },
+    reject: async (id: string, reason: string) => {
+      try {
+        return await request<{ success: boolean; data: { booking: Booking } }>(`/api/bookings/${id}/reject`, {
+          method: "POST",
+          body: JSON.stringify({ reason }),
+        });
+      } catch (e) {
+        let stored: any = {};
+        if (typeof window !== "undefined") {
+          stored = JSON.parse(localStorage.getItem("demo_booking") || "{}");
+          stored.status = "rejected";
+          localStorage.setItem("demo_booking", JSON.stringify(stored));
+        }
+        return {
+          success: true,
+          data: { booking: { ...stored, _id: id, status: "rejected", service: mockServices[0] } as any }
+        };
+      }
+    },
     mine: async () => {
       try {
         return await request<{ success: boolean; data: { bookings: Booking[] } }>("/api/bookings/me");
