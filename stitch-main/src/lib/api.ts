@@ -245,6 +245,18 @@ export const api = {
         };
       }
     },
+    create: (body: Record<string, unknown>) =>
+      request<{ success: boolean; data: { service: Service } }>("/api/services", {
+        method: "POST",
+        body: JSON.stringify(body),
+      }),
+    update: (id: string, body: Record<string, unknown>) =>
+      request<{ success: boolean; data: { service: Service } }>(`/api/services/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify(body),
+      }),
+    remove: (id: string) =>
+      request<{ success: boolean }>(`/api/services/${id}`, { method: "DELETE" }),
   },
   bookings: {
     create: async (body: Record<string, unknown>) => {
