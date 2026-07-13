@@ -147,6 +147,12 @@ export default function AdminContentPage() {
                   className="w-full px-3 py-2 rounded-lg bg-neutral-800 text-white border border-neutral-700"
                 />
                 <input
+                  placeholder="رابط الصورة (Image URL)"
+                  value={editingService.imageUrl || ""}
+                  onChange={(e) => setEditingService({ ...editingService, imageUrl: e.target.value })}
+                  className="w-full px-3 py-2 rounded-lg bg-neutral-800 text-white border border-neutral-700"
+                />
+                <input
                   placeholder="slug (مثال: face-serum)"
                   value={editingService.slug || ""}
                   onChange={(e) => setEditingService({ ...editingService, slug: e.target.value })}
@@ -218,6 +224,12 @@ export default function AdminContentPage() {
                   onChange={(e) =>
                     setEditingPost({ ...editingPost, titleEn: e.target.value, title: e.target.value } as any)
                   }
+                  className="w-full px-3 py-2 rounded-lg bg-neutral-800 text-white border border-neutral-700"
+                />
+                <input
+                  placeholder="رابط الصورة (Image URL)"
+                  value={(editingPost as any).imageUrl || ""}
+                  onChange={(e) => setEditingPost({ ...editingPost, imageUrl: e.target.value } as any)}
                   className="w-full px-3 py-2 rounded-lg bg-neutral-800 text-white border border-neutral-700"
                 />
                 <input
