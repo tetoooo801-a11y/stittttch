@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "installCommand": "cd stitch-main && npm install",
+  "buildCommand": "cd stitch-main && npm run build",
+  "outputDirectory": "stitch-main/.next"
+}
