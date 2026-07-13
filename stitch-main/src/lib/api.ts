@@ -46,6 +46,7 @@ export interface User {
   _id: string;
   name: string;
   email: string;
+  role?: string;
 }
 
 export interface Service {
@@ -303,7 +304,7 @@ export const api = {
         const subtotal = service.price * qty;
         const depositAmount = subtotal * 0.5;
         const total = Math.max(0, depositAmount - discountAmount);
-        
+
         return {
           success: true,
           data: {
@@ -332,6 +333,17 @@ export const api = {
         };
       }
     },
+    allAdmin: (status?: string) => {
+      const qs = status ? `?status=${status}` : "";
+      return request<{ success: boolean; data: { bookings: Booking[] } }>(
+        `/api/bookings/admin/all${qs}`
+      );
+    },
+    reject: (id: string, reason?: string) =>
+      request<{ success: boolean; data: { booking: Booking } }>(`/api/bookings/${id}/reject`, {
+        method: "POST",
+        body: JSON.stringify({ reason }),
+      }),
     update: async (id: string, body: Record<string, unknown>) => {
       try {
         return await request<{ success: boolean; data: { booking: Booking } }>(`/api/bookings/${id}`, {
@@ -342,7 +354,7 @@ export const api = {
         let stored: any = {};
         if (typeof window !== "undefined") {
           stored = JSON.parse(localStorage.getItem("demo_booking") || "{}");
-          
+
           if (body.discountCode) {
             stored.discountCode = body.discountCode;
             stored.discountAmount = String(body.discountCode).toUpperCase() === "STITCH10" ? 10 : 0;
@@ -350,10 +362,10 @@ export const api = {
           if (body.quantity) stored.quantity = body.quantity;
           if (body.healthNotes) stored.healthNotes = body.healthNotes;
           if (body.paymentMethod) stored.paymentMethod = body.paymentMethod;
-          
+
           localStorage.setItem("demo_booking", JSON.stringify(stored));
         }
-        
+
         const service = mockServices.find(s => s._id === stored.serviceId) || mockServices[0];
         const qty = Number(stored.quantity) || 1;
         const discountAmount = stored.discountAmount || 0;
@@ -416,7 +428,7 @@ export const api = {
           stored = JSON.parse(localStorage.getItem("demo_booking") || "{}");
         }
         if (!stored.serviceId) return { success: true, data: { bookings: [] } };
-        
+
         const service = mockServices.find(s => s._id === stored.serviceId) || mockServices[0];
         return {
           success: true,
@@ -478,7 +490,7 @@ export const api = {
         const cartStr = localStorage.getItem("demo_cart") || "{}";
         const parsed = JSON.parse(cartStr);
         const items: CartItem[] = parsed.items || [];
-        
+
         const existing = items.find(i => i.service._id === serviceId);
         if (existing) {
           existing.quantity += quantity;
@@ -489,7 +501,7 @@ export const api = {
           } as any;
           items.push({ _id: `item_${Date.now()}`, service, quantity });
         }
-        
+
         localStorage.setItem("demo_cart", JSON.stringify({ items }));
         return { success: true, data: { cart: { _id: "demo_cart", items } } };
       }
@@ -529,6 +541,18 @@ export const api = {
       request<{ success: boolean; data: { posts: EditorialPost[] } }>("/api/editorial"),
     get: (slug: string) =>
       request<{ success: boolean; data: { post: EditorialPost } }>(`/api/editorial/${slug}`),
+    create: (body: Record<string, unknown>) =>
+      request<{ success: boolean; data: { post: EditorialPost } }>("/api/editorial", {
+        method: "POST",
+        body: JSON.stringify(body),
+      }),
+    update: (id: string, body: Record<string, unknown>) =>
+      request<{ success: boolean; data: { post: EditorialPost } }>(`/api/editorial/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify(body),
+      }),
+    remove: (id: string) =>
+      request<{ success: boolean }>(`/api/editorial/${id}`, { method: "DELETE" }),
   },
   reviews: {
     create: (body: Record<string, unknown>) =>
