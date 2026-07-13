@@ -2,11 +2,13 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import { useAuth } from "@/context/AuthContext";
 import { api } from "@/lib/api";
 
 export const Navbar: React.FC = () => {
+  const pathname = usePathname();
   const { toggleLanguage, language, t } = useLanguage();
   const { user, logout, loading: authLoading } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -60,6 +62,8 @@ export const Navbar: React.FC = () => {
   };
 
   const navLinkClass = "text-on-surface-variant hover:text-primary transition-all duration-300 hover:underline decoration-rose-gold decoration-2 underline-offset-[6px]";
+
+  if (pathname?.startsWith("/admin")) return null;
 
   return (
     <div className="fixed top-0 left-0 w-full z-50">
