@@ -81,22 +81,24 @@ export default function AdminBookingsPage() {
                 </span>
               </div>
 
-              {(b.status === "pending" || b.status === "pending_deposit") && (
-                <div className="flex gap-2">
+              <div className="flex gap-2">
+                {b.status !== "confirmed" && (
                   <button
                     onClick={() => handleConfirm(b._id)}
                     className="px-3 py-1.5 rounded-lg bg-green-700 text-white text-sm hover:bg-green-600"
                   >
                     قبول
                   </button>
+                )}
+                {b.status !== "cancelled" && (
                   <button
                     onClick={() => handleReject(b._id)}
                     className="px-3 py-1.5 rounded-lg bg-red-700 text-white text-sm hover:bg-red-600"
                   >
                     رفض
                   </button>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           ))}
         </div>
