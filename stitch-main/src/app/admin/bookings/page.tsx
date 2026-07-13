@@ -81,7 +81,7 @@ export default function AdminBookingsPage() {
                 </span>
               </div>
 
-              {b.status === "pending" && (
+              {(b.status === "pending" || b.status === "pending_deposit") && (
                 <div className="flex gap-2">
                   <button
                     onClick={() => handleConfirm(b._id)}

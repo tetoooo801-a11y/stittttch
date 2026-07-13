@@ -11,7 +11,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
       .from("bookings")
       .update({ status: "confirmed" })
       .eq("id", id)
-      .eq("status", "pending")
+      .in("status", ["pending", "pending_deposit"])
       .select(BOOKING_SELECT)
       .maybeSingle();
 
