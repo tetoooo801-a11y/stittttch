@@ -48,7 +48,24 @@ function decamelize(obj: any) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const dbData = decamelize(body);
+    const parsed = decamelize(body);
+    const dbData = {
+      title_key: "new_service",
+      desc_key: "new_service_desc",
+      title_en: "New Service",
+      title_ar: "خدمة جديدة",
+      desc_en: "Description coming soon...",
+      desc_ar: "التفاصيل قريباً...",
+      duration: 60,
+      price: 100,
+      rating: 5,
+      reviews_count: 0,
+      image_url: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80",
+      is_active: true,
+      category: "face",
+      slug: "new-service",
+      ...parsed
+    };
     delete dbData.id;
     const { data, error } = await supabase.from("services").insert(dbData).select("*").single();
     if (error) throw error;

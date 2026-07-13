@@ -31,7 +31,24 @@ function decamelize(obj: any) {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const dbData = decamelize(body);
+    const parsed = decamelize(body);
+    const dbData = {
+      title_en: "New Editorial",
+      title_ar: "مقال جديد",
+      slug: "new-editorial",
+      content_en: "Content coming soon...",
+      content_ar: "المحتوى قريباً...",
+      image_url: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80",
+      status: "published",
+      author_name: "Admin",
+      read_time: "5 min",
+      ...parsed
+    };
+    if (parsed.content) {
+      dbData.content_en = parsed.content;
+      dbData.content_ar = parsed.content;
+      delete dbData.content;
+    }
     delete dbData.id;
     const { data, error } = await supabase.from("editorials").insert(dbData).select("*").single();
     if (error) throw error;
