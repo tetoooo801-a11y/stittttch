@@ -12,8 +12,9 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
 
     const { data: booking, error } = await supabase
       .from("bookings")
-      .update({ status: "rejected", rejection_reason: reason || null })
+      .update({ status: "cancelled", rejection_reason: reason || null })
       .eq("id", id)
+      .eq("status", "pending")
       .select(BOOKING_SELECT)
       .maybeSingle();
 

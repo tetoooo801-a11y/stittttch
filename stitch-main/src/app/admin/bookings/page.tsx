@@ -45,9 +45,9 @@ export default function AdminBookingsPage() {
           className="bg-neutral-800 text-white text-sm rounded-lg px-3 py-2 border border-neutral-700"
         >
           <option value="">كل الحالات</option>
-          <option value="pending_deposit">قيد الانتظار</option>
+          <option value="pending">قيد الانتظار</option>
           <option value="confirmed">مؤكد</option>
-          <option value="rejected">مرفوض</option>
+          <option value="cancelled">مرفوض</option>
         </select>
       </div>
 
@@ -72,7 +72,7 @@ export default function AdminBookingsPage() {
                   className={`inline-block mt-1 text-xs px-2 py-0.5 rounded-full ${
                     b.status === "confirmed"
                       ? "bg-green-900 text-green-300"
-                      : b.status === "rejected"
+                      : b.status === "cancelled"
                       ? "bg-red-900 text-red-300"
                       : "bg-yellow-900 text-yellow-300"
                   }`}
@@ -81,7 +81,7 @@ export default function AdminBookingsPage() {
                 </span>
               </div>
 
-              {b.status === "pending_deposit" && (
+              {b.status === "pending" && (
                 <div className="flex gap-2">
                   <button
                     onClick={() => handleConfirm(b._id)}

@@ -295,7 +295,7 @@ export const api = {
               depositAmount,
               total,
               paymentMethod: "card",
-              status: "pending_deposit",
+              status: "pending",
               specialist: "Sarah W."
             }
           }
@@ -338,7 +338,7 @@ export const api = {
               depositAmount,
               total,
               paymentMethod: stored.paymentMethod || "card",
-              status: stored.status || "pending_deposit",
+              status: stored.status || "pending",
               specialist: "Sarah W."
             }
           }
@@ -351,11 +351,26 @@ export const api = {
         `/api/bookings/admin/all${qs}`
       );
     },
-    reject: (id: string, reason?: string) =>
-      request<{ success: boolean; data: { booking: Booking } }>(`/api/bookings/${id}/reject`, {
-        method: "POST",
-        body: JSON.stringify({ reason }),
-      }),
+    reject: async (id: string, reason?: string) => {
+      try {
+        return await request<{ success: boolean; data: { booking: Booking } }>(`/api/bookings/${id}/reject`, {
+          method: "POST",
+          body: JSON.stringify({ reason }),
+        });
+      } catch (e) {
+        let stored: any = {};
+        if (typeof window !== "undefined") {
+          stored = JSON.parse(localStorage.getItem("demo_booking") || "{}");
+          stored.status = "cancelled";
+          stored.rejectionReason = reason;
+          localStorage.setItem("demo_booking", JSON.stringify(stored));
+        }
+        return {
+          success: true,
+          data: { booking: { ...stored, _id: id, status: "cancelled", rejectionReason: reason, service: mockServices[0] } as any }
+        };
+      }
+    },
     update: async (id: string, body: Record<string, unknown>) => {
       try {
         return await request<{ success: boolean; data: { booking: Booking } }>(`/api/bookings/${id}`, {

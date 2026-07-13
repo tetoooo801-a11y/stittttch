@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
         subtotal,
         deposit_amount: depositAmount,
         total,
-        status: "pending_deposit",
+        status: "pending",
       })
       .select(BOOKING_SELECT)
       .single();
