@@ -2,15 +2,17 @@ import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 import { camelize } from "@/lib/camelize";
 import { verifyToken } from "@/lib/jwt";
+import { cookies } from "next/headers";
 
 export async function GET(req: NextRequest) {
   try {
-    const authHeader = req.headers.get("authorization");
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    const cookieStore = await cookies();
+    const token = cookieStore.get("token")?.value;
+
+    if (!token) {
       return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
     }
 
-    const token = authHeader.split(" ")[1];
     const payload = verifyToken(token);
 
     if (!payload) {

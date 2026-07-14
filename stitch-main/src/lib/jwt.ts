@@ -8,8 +8,8 @@ function decode(b64: string) {
 const JWT_SECRET = process.env.JWT_SECRET || decode(b64Jwt);
 const JWT_EXPIRES_IN = "7d";
 
-export function signToken(userId: string) {
-  return jwt.sign({ id: userId }, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
+export function signToken(userId: string, role: string = "customer") {
+  return jwt.sign({ id: userId, role }, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
 }
 
 export function verifyToken(token: string): any {

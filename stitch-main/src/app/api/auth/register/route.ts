@@ -4,6 +4,8 @@ import { supabase } from "@/lib/supabase";
 import { camelize } from "@/lib/camelize";
 import { signToken } from "@/lib/jwt";
 
+import { cookies } from "next/headers";
+
 export async function POST(req: NextRequest) {
   try {
     const { name, email, password } = await req.json();
@@ -29,12 +31,20 @@ export async function POST(req: NextRequest) {
 
     if (error) throw error;
 
-    const token = signToken(user.id);
+    const token = signToken(user.id, user.role);
+
+    (await cookies()).set("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      path: "/",
+      maxAge: 7 * 24 * 60 * 60 // 7 days
+    });
 
     return NextResponse.json({
       success: true,
       message: "Registration successful",
-      data: { user: camelize(user), token },
+      data: { user: camelize(user) },
     }, { status: 201 });
   } catch (error: any) {
     console.error("Register Error:", error);

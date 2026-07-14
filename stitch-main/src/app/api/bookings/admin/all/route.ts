@@ -5,20 +5,8 @@ import { verifyToken } from "@/lib/jwt";
 
 const BOOKING_SELECT = "*, service:services(*)";
 
-function getUserFromAuthHeader(req: NextRequest) {
-  const authHeader = req.headers.get("authorization");
-  if (authHeader && authHeader.startsWith("Bearer ")) {
-    const token = authHeader.split(" ")[1];
-    return verifyToken(token);
-  }
-  return null;
-}
-
 export async function GET(req: NextRequest) {
   try {
-    const user = getUserFromAuthHeader(req);
-    // Add logic here to verify user.role === 'admin' if needed, similar to adminMiddleware
-
     const { searchParams } = new URL(req.url);
     const status = searchParams.get("status");
 

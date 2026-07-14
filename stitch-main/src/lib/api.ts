@@ -19,11 +19,6 @@ async function request<T>(
     "Content-Type": "application/json",
     ...(options.headers as Record<string, string> || {}),
   };
-  if (typeof window !== "undefined") {
-    const token = localStorage.getItem("token");
-    if (token) reqHeaders.Authorization = `Bearer ${token}`;
-  }
-
   const res = await fetch(`${API_URL}${path}`, {
     ...options,
     headers: reqHeaders,
